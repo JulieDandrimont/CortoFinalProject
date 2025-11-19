@@ -16,3 +16,5 @@ Recap features
 - **Outils supplémentaires** :
   - Terminal intégré de VS Code
   - Extensions VS Code (Python, GitLens, etc.)
+ 
+ gros caca
