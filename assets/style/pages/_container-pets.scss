@@ -1,0 +1,116 @@
+.container-pets {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  border: 1px solid black;
+  overflow: hidden;
+
+  .pets {
+    top: 0;
+    left: 0;
+    background: rgb(180, 180, 180);
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    transform: rotate(45deg);
+    border-radius: 0px 500px 500px 500px;
+  }
+  .pets2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    border-radius: 50px 0px 200px 00px;
+    transform: translateX(37%) translateY(-11%) rotate(45deg);
+    height: 200px;
+    width: 200px;
+  }
+  .frog,
+  .cat,
+  .dragon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(86, 86, 86);
+    transform: translateX(75%) translateY(55%);
+    height: 140px;
+    border-radius: 100px;
+  }
+  .container-items-frog,
+  .container-items-cat,
+  .container-items-dragon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 300px;
+    transform: translateX(8%);
+    border-radius: 200px;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+
+    .items-frog,
+    .items-cat,
+    .items-dragon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: white;
+      border: 1px solid black;
+      width: 80px;
+      height: 80px;
+      display: grid;
+      place-items: center;
+      border-radius: 100px;
+      transition: 0.8s ease-in-out;
+      .hover-items-frog,
+      .hover-items-cat,
+      .hover-items-dragon {
+        position: absolute;
+        height: 60px;
+        width: 130px;
+        background: rgb(255, 255, 255);
+        transform: translateY(100%);
+        border-radius: 3px;
+        z-index: 3;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+      }
+      &:hover {
+        z-index: 1;
+        transform: scale(1.1);
+        transition: 0.8s ease-in-out;
+        .hover-items-frog,
+        .hover-items-cat,
+        .hover-items-dragon {
+          z-index: 3;
+          opacity: 1;
+          visibility: visible;
+          transition: 0.3s ease-in-out;
+        }
+      }
+      &:nth-child(1) {
+        transform: translate(0%, 140%);
+        transition: 0.8s ease-in-out;
+      }
+      &:nth-child(2) {
+        transform: translate(40%, 235%);
+        transition: 0.8s ease-in-out;
+      }
+      &:nth-child(3) {
+        transform: translate(137%, 275%);
+        transition: 0.8s ease-in-out;
+      }
+      &:nth-child(4) {
+        transform: translate(235%, 235%);
+        transition: 0.8s ease-in-out;
+      }
+      &:nth-child(5) {
+        transform: translate(275%, 140%);
+        transition: 0.8s ease-in-out;
+      }
+    }
+  }
+}
