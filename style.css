@@ -1,0 +1,265 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+body {
+  position: relative;
+  width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+}
+/* ====================== Aside bar left ====================== */
+.container-current-attributs {
+  height: 60%;
+  width: 110px;
+
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.container-current {
+  position: relative;
+  width: 110px;
+  padding: 10px;
+  border: 1px solid black;
+}
+.container-current img {
+  height: 70px;
+  width: 70px;
+  border-radius: 50px;
+  background: red;
+}
+.container-current span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  border: 1px solid black;
+  transform: translate(190%, 10%);
+  display: grid;
+  place-items: center;
+}
+.container-current p:nth-child(3) {
+  font-size: 1.4rem;
+  text-align: center;
+  text-transform: bold;
+}
+.container-current p ~ p {
+  text-align: center;
+  text-transform: bold;
+}
+/* ====================== Cauldron ====================== */
+.cauldron-container {
+  height: 250px;
+  width: 180px;
+  margin: 0 30% 0 auto;
+}
+.cauldron-container p {
+  font-size: 1.4rem;
+  text-align: center;
+  text-transform: bold;
+}
+.liquid-container {
+  border: 1px solid black;
+  height: 100%;
+  width: 60%;
+  border-radius: 60px;
+  margin: 0 auto;
+  align-content: end;
+}
+.liquid {
+  height: 50%;
+  width: 100%;
+  border-radius: 0px 0px 60px 60px;
+  background: red;
+}
+/* ====================== Flower ======================*/
+.flower-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 400px;
+  width: 400px;
+  border: 1px solid red;
+  margin: 50px 40% 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate(110%, 90%);
+}
+.flower {
+  height: 250px;
+  width: 250px;
+  margin: 0 auto;
+  border: 1px solid red;
+  border-radius: 200px;
+}
+
+.flower-container p {
+  font-size: 1.4rem;
+  text-align: center;
+}
+.flower-container p:nth-child(2) {
+  padding: 20px;
+  font-size: 1.8rem;
+  text-transform: bold;
+}
+/* ====================== Familiar ======================*/
+.familiar {
+  float: right;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.container-pets {
+  position: relative;
+  width: 340px;
+  overflow: hidden;
+}
+.pets {
+  top: 0;
+  left: 0;
+  background: rgb(180, 180, 180);
+  width: 210px;
+  height: 210px;
+  margin: 0 auto;
+  transform: rotate(45deg);
+  border-radius: 0px 500px 500px 500px;
+}
+.pets2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  border-radius: 50px 0px 200px 00px;
+  transform: translateX(80%) translateY(-16%) rotate(45deg);
+  height: 130px;
+  width: 130px;
+}
+.frog,
+.cat,
+.dragon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgb(86, 86, 86);
+  transform: translateX(160%) translateY(70%);
+  height: 80px;
+  border-radius: 100px;
+}
+.container-items-frog,
+.container-items-cat,
+.container-items-dragon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 300px;
+  width: 300px;
+  transform: translateX(8%);
+  border-radius: 200px;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+.items-frog,
+.items-cat,
+.items-dragon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 100px;
+  transition: 0.8s ease-in-out;
+}
+.hover-items-frog,
+.hover-items-cat,
+.hover-items-dragon {
+  position: absolute;
+  height: 60px;
+  width: 130px;
+  background: rgb(255, 255, 255);
+  transform: translateY(100%);
+  border-radius: 3px;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+}
+.hover-items-frog:hover,
+.hover-items-cat:hover,
+.hover-items-dragon:hover {
+  z-index: 1;
+  transform: scale(1.1);
+  transition: 0.8s ease-in-out;
+}
+.hover-items-frog,
+.hover-items-cat,
+.hover-items-dragon {
+  z-index: 3;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3s ease-in-out;
+}
+
+.items-frog:nth-child(1),
+.items-cat:nth-child(1),
+.items-dragon:nth-child(1) {
+  transform: translate(0%, 140%);
+  transition: 0.8s ease-in-out;
+}
+.items-frog:nth-child(2),
+.items-cat:nth-child(2),
+.items-dragon:nth-child(2) {
+  transform: translate(40%, 235%);
+  transition: 0.8s ease-in-out;
+}
+.items-frog:nth-child(3),
+.items-cat:nth-child(3),
+.items-dragon:nth-child(3) {
+  transform: translate(137%, 275%);
+  transition: 0.8s ease-in-out;
+}
+.items-frog:nth-child(4),
+.items-cat:nth-child(4),
+.items-dragon:nth-child(4) {
+  transform: translate(235%, 235%);
+  transition: 0.8s ease-in-out;
+}
+.items-frog:nth-child(5),
+.items-cat:nth-child(5),
+.items-dragon:nth-child(5) {
+  transform: translate(275%, 140%);
+  transition: 0.8s ease-in-out;
+}
+
+/* ====================== Familiar ======================*/
+.container-body-bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  height: 40%;
+  border: 1px solid black;
+}
+/* ====================== Familiar ======================*/
+.shop-container {
+  border: 1px solid black;
+  height: 100%;
+  width: 70%;
+}

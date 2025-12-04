@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <!-- bar latérale des attributs -->
@@ -17,7 +17,7 @@
         <!-- en hover -->
       </div>
       <div class="container-current serpe">
-        <img src="" alt="" id="serpe" />
+        <img src="./assets/img/frog.png" alt="" id="serpe" />
         <span class="number">nb</span>
         <p>serpe</p>
         <p>effect</p>
@@ -35,67 +35,8 @@
         <p>effect</p>
       </div>
     </aside>
-    <!-- container du chaudron -->
-    <div class="cauldron-container">
-      <!--  carré qui prend tt l'espace -->
-      <div class="liquid-container">
-        <!--  rond du chaudron-->
-        <div class="liquid"></div>
-        <!--  le liquide qui monte et descend -->
-      </div>
-      <p>cauldron</p>
-    </div>
-    <!-- container fleur clickable -->
-    <div class="flower-container">
-      <div class="flower">
-        <img src="" alt="" id="flower" />
-      </div>
-      <p>collected flower :</p>
-      <p>flower cumul</p>
-    </div>
-    <!-- shop container -->
-    <div class="shop-container">
-      <h1>Shop</h1>
-      <ul class="item-container-background">
-        <!-- C'est une liste d'items -->
-        <li class="item-shop">
-          <!-- item en particulier img + text + buy -->
-          <img src="" alt="" id="shop-panier" />
-          <div class="item-label">
-            <p>panier</p>
-            <p>price</p>
-          </div>
-          <button class="shop">buy</button>
-        </li>
-        <li class="item-shop">
-          <img src="" alt="" id="shop-serpe" />
-          <div class="item-label">
-            <p>serpe</p>
-            <p>price</p>
-          </div>
-          <button class="shop">buy</button>
-        </li>
-        <li class="item-shop">
-          <img src="" alt="" id="shop-bottes" />
-          <div class="item-label">
-            <p>name</p>
-            <p>price</p>
-          </div>
-          <button class="shop">buy</button>
-        </li>
-        <li class="item-shop">
-          <img src="" alt="" id="shop-name" />
-          <div class="item-label">
-            <p>name</p>
-            <p>price</p>
-          </div>
-          <button class="shop">buy</button>
-        </li>
-      </ul>
-    </div>
-
     <!-- Composent container-pets -->
-    <aside class="Familiar">
+    <aside class="familiar">
       <div class="container-pets">
         <div class="pets"></div>
         <div class="pets2"></div>
@@ -125,11 +66,49 @@
         <ul class="container-items-dragon"></ul>
       </div>
     </aside>
-
-    <!-- container de la collection -->
-    <div class="collection-container">
-      <button class="collection">collection</button>
-      <!--collection is a round button -->
+    <!-- container du chaudron -->
+    <div class="cauldron-container">
+      <!--  carré qui prend tt l'espace -->
+      <div class="liquid-container">
+        <!--  rond du chaudron-->
+        <div class="liquid"></div>
+        <!--  le liquide qui monte et descend -->
+      </div>
+      <p>Cauldron</p>
     </div>
+
+    <!-- container fleur clickable -->
+    <div class="flower-container">
+      <div class="flower">
+        <img src="" alt="" id="flower" />
+      </div>
+      <p>collected flower :</p>
+      <p>flower cumul</p>
+    </div>
+
+    <!-- shop container -->
+    <div class="container-body-bottom">
+      <div class="shop-container">
+        <h1>Shop</h1>
+        <ul class="item-container-background">
+          <!-- C'est une liste d'items -->
+          <li class="item-shop">
+            <!-- item en particulier img + text + buy -->
+            <img src="" alt="" id="shop-panier" />
+            <div class="item-label">
+              <p>panier</p>
+              <p>price</p>
+            </div>
+            <button class="shop">buy</button>
+          </li>
+        </ul>
+      </div>
+      <!-- container de la collection -->
+      <div class="collection-container">
+        <button class="collection">collection</button>
+        <!--collection is a round button -->
+      </div>
+    </div>
+    <script src="./index.js"></script>
   </body>
 </html>

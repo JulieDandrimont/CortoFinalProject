@@ -29,60 +29,142 @@
       "type": "auto"
     },
     {
+      "name": "Caterpillars",
+      "price": 4500,
+      "effect": 1.2,
+      "type": "click"
+    },
+    {
+      "name": "Fly",
+      "price": 4500,
+      "effect": 1.4,
+      "type": "click"
+    },
+    {
       "name": "Chapeau",
-      "price": 500,
+      "price": 5000,
       "effect": 1,
       "type": "click"
     },
     {
+      "name": "Water drople",
+      "price": 18500,
+      "effect": 1.6,
+      "type": "click"
+    },
+    {
+      "name": "Dragonfly",
+      "price": 20000,
+      "effect": 1.8,
+      "type": "click"
+    },
+    {
+      "name": "Petit nuage",
+      "price": 25000,
+      "effect": 1.8,
+      "type": "click"
+    },
+    {
+      "name": "Puddle",
+      "price": 30000,
+      "effect": 2,
+      "type": "click"
+    },
+    {
       "name": "Manteau",
-      "price": 9000,
+      "price": 30000,
       "effect": 2,
       "type": "click"
     },
     {
       "name": "Sacoche alchimiste",
-      "price": 20000,
+      "price": 40000,
       "effect": 2,
+      "type": "click"
+    },
+    {
+      "name": "Bell",
+      "price": 45000,
+      "effect": 2.4,
+      "type": "click"
+    },
+    {
+      "name": "Brush",
+      "price": 47000,
+      "effect": 2.6,
+      "type": "click"
+    },
+    {
+      "name": "Cushion",
+      "price": 50000,
+      "effect": 2.8,
+      "type": "click"
+    },
+    {
+      "name": "Ball of yarn",
+      "price": 55000,
+      "effect": 3,
+      "type": "click"
+    },
+    {
+      "name": "Claw",
+      "price": 65000,
+      "effect": 4.2,
       "type": "click"
     },
     {
       "name": "Baguette",
-      "price": 40000,
+      "price": 70000,
       "effect": 3,
+      "type": "click"
+    },
+    {
+      "name": "Necklace",
+      "price": 85000,
+      "effect": 2.2,
+      "type": "click"
+    },
+    {
+      "name": "Scale",
+      "price": 85000,
+      "effect": 4.4,
+      "type": "click"
+    },
+    {
+      "name": "Red Flame",
+      "price": 90000,
+      "effect": 4.6,
+      "type": "click"
+    },
+    {
+      "name": "Medicine",
+      "price": 95000,
+      "effect": 4.8,
+      "type": "click"
+    },
+    {
+      "name": "Golden Egg",
+      "price": 95000,
+      "effect": 5,
       "type": "click"
     }
   ],
-  "pet": [
+  "pets": [
     {
       "name": "Frog",
-      "price": 5000,
+      "price": 4000,
       "increasePrice": 4,
       "effect": 1,
       "nb": 3,
       "type": "click",
-      "priceObject": 1.5,
-      "object": [
-        ["Caterpillars", 1.2],
-        ["Fly", 1.4],
-        ["Water droplet", 1.6],
-        ["Dragonfly", 1.8],
-        ["Puddle", 2]
-      ]
+      "priceObject": 1.5
     },
     {
       "name": "cat",
-      "price": 38000,
+      "price": 18000,
       "effect": 2,
       "type": "auto",
-      "priceObject": 3.5,
-      "object": [
-        ["Necklace", 2.2],
-        ["Bell", 2.4],
-        ["Brush", 2.6],
-        ["Cushion", 2.8],
-        ["Ball of yarn", 3]
-      ]
+      "priceObject": 3.5
     },
     {
       "name": "dragon",
@@ -91,14 +173,7 @@
       "nb": 2,
       "effect": 4,
       "type": "click",
-      "priceObject": 2.5,
-      "object": [
-        ["Claw", 4.2],
-        ["Scale", 4.4],
-        ["Red Flame", 4.6],
-        ["Medicine", 4.8],
-        ["Golden Egg", 5]
-      ]
+      "priceObject": 2.5
     }
   ]
 }
