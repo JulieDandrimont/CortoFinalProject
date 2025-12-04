@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "Object": [
-=======
   "object": [
->>>>>>> 32f7bd1943ff41e2a3bbfd270ba8ad6dbd1fa8e0
     {
       "name": "Panier",
       "price": 15,
@@ -66,20 +62,6 @@
       "nb": 3,
       "type": "click",
       "priceObject": 1.5,
-<<<<<<< HEAD
-      "object": {
-        "Caterpillars": 1.2,
-        "Fly": 1.4,
-        "Water droplet": 1.6,
-        "Dragonfly": 1.8,
-        "Puddle": 2,
-        "Butterfly": 2.2,
-        "Water lily": 2.4,
-        "Pond": 2.6,
-        "Small cloud": 2.8,
-        "Lake": 3
-      }
-=======
       "object": [
         ["Caterpillars", 1.2],
         ["Fly", 1.4],
@@ -87,7 +69,6 @@
         ["Dragonfly", 1.8],
         ["Puddle", 2]
       ]
->>>>>>> 32f7bd1943ff41e2a3bbfd270ba8ad6dbd1fa8e0
     },
     {
       "name": "cat",
@@ -95,15 +76,6 @@
       "effect": 2,
       "type": "auto",
       "priceObject": 3.5,
-<<<<<<< HEAD
-      "object": {
-        "Necklace": 2.2,
-        "Bell": 2.4,
-        "Brush": 2.6,
-        "Cushion": 2.8,
-        "Ball of yarn": 3
-      }
-=======
       "object": [
         ["Necklace", 2.2],
         ["Bell", 2.4],
@@ -111,7 +83,6 @@
         ["Cushion", 2.8],
         ["Ball of yarn", 3]
       ]
->>>>>>> 32f7bd1943ff41e2a3bbfd270ba8ad6dbd1fa8e0
     },
     {
       "name": "dragon",
@@ -121,18 +92,6 @@
       "effect": 4,
       "type": "click",
       "priceObject": 2.5,
-<<<<<<< HEAD
-      "object": {
-        "Claw": 4.2,
-        "Scale": 4.4,
-        "Red Flame": 4.6,
-        "Medicine": 4.8,
-        "Golden Egg": 5
-      }
-    }
-  ]
-}
-=======
       "object": [
         ["Claw", 4.2],
         ["Scale", 4.4],
@@ -143,4 +102,3 @@
     }
   ]
 }
->>>>>>> 32f7bd1943ff41e2a3bbfd270ba8ad6dbd1fa8e0
