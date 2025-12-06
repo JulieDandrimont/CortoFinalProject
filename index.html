@@ -4,111 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Style  -->
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <!-- bar latérale des attributs -->
-    <aside class="container-current-attributs">
-      <div class="container-current panier">
-        <img src="" alt="" id="panier" />
-        <span class="number">nb</span>
-        <p>panier</p>
-        <p>effect</p>
-        <!-- en hover -->
-      </div>
-      <div class="container-current serpe">
-        <img src="./assets/img/frog.png" alt="" id="serpe" />
-        <span class="number">nb</span>
-        <p>serpe</p>
-        <p>effect</p>
-      </div>
-      <div class="container-current bottes">
-        <img src="" alt="" id="bottes" />
-        <span class="number">nb</span>
-        <p>bottes</p>
-        <p>effect</p>
-      </div>
-      <div class="container-current manteau">
-        <img src="" alt="" id="manteau" />
-        <span class="number">nb</span>
-        <p>manteau</p>
-        <p>effect</p>
-      </div>
-    </aside>
-    <!-- Composent container-pets -->
-    <aside class="familiar">
-      <div class="container-pets">
-        <div class="pets"></div>
-        <div class="pets2"></div>
-        <img
-          class="frog"
-          src="./assets/img/frog.png"
-          alt="frog create with AI"
-        />
-        <ul class="container-items-frog"></ul>
-      </div>
-
-      <div class="container-pets">
-        <div class="pets"></div>
-        <div class="pets2"></div>
-        <img class="cat" src="./assets/img/cat.png" alt="cat create with AI" />
-        <ul class="container-items-cat"></ul>
-      </div>
-
-      <div class="container-pets">
-        <div class="pets"></div>
-        <div class="pets2"></div>
-        <img
-          class="dragon"
-          src="./assets/img/dragon.png"
-          alt="dragon create with AI"
-        />
-        <ul class="container-items-dragon"></ul>
-      </div>
-    </aside>
-    <!-- container du chaudron -->
-    <div class="cauldron-container">
-      <!--  carré qui prend tt l'espace -->
-      <div class="liquid-container">
-        <!--  rond du chaudron-->
-        <div class="liquid"></div>
-        <!--  le liquide qui monte et descend -->
-      </div>
-      <p>Cauldron</p>
-    </div>
-
-    <!-- container fleur clickable -->
-    <div class="flower-container">
-      <div class="flower">
-        <img src="" alt="" id="flower" />
-      </div>
-      <p>collected flower :</p>
-      <p>flower cumul</p>
-    </div>
-
-    <!-- shop container -->
-    <div class="container-body-bottom">
+    <!-- Conteneur des objets récurrent et le shop.  -->
+    <div class="container-current-shop">
+      <!-- Shop -->
       <div class="shop-container">
         <h1>Shop</h1>
-        <ul class="item-container-background">
-          <!-- C'est une liste d'items -->
-          <li class="item-shop">
-            <!-- item en particulier img + text + buy -->
-            <img src="" alt="" id="shop-panier" />
-            <div class="item-label">
-              <p>panier</p>
-              <p>price</p>
-            </div>
-            <button class="shop">buy</button>
-          </li>
-        </ul>
+        <ul class="container-item-shop"></ul>
       </div>
-      <!-- container de la collection -->
-      <div class="collection-container">
-        <button class="collection">collection</button>
-        <!--collection is a round button -->
+      <!-- current -->
+      <ul class="container-current-attributs"></ul>
+    </div>
+    <!-- Conteneur du chaudron, de la fleur et de la collection.  -->
+    <div class="container-cauldoron-flower-collection">
+      <!-- Cauldron -->
+      <div class="cauldron-container">
+        <div class="liquid-container">
+          <div class="liquid"></div>
+          <p>Cauldron</p>
+        </div>
+      </div>
+      <!-- Flower et collection-->
+      <div class="container-flower-collection">
+        <!-- Collection -->
+        <div class="collection-container">
+          <button class="collection">collection</button>
+        </div>
+        <!-- Flower -->
+        <div class="flower-container">
+          <div class="flower"></div>
+          <div class="flower-count">
+            <p>collected flower: <span>0</span></p>
+            <p>flower cumul: <span>0</span></p>
+          </div>
+        </div>
       </div>
     </div>
-    <script src="./index.js"></script>
+    <!-- Familier -->
+    <div class="familiar">
+      <div class="container-pets">
+        <div class="pets"></div>
+        <img class="frog" src="./img/frog.png" alt="" />
+      </div>
+    </div>
+    <!-- Window Collection -->
+    <div class="container-collection">
+      <button class="close"></button>
+      <ul class="ul-collection"></ul>
+    </div>
+    <!-- Js -->
+    <script src="./script.js"></script>
   </body>
 </html>
