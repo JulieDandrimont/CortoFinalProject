@@ -1,3 +1,16 @@
+:root {
+  --violet1: rgba(217, 213, 255, 0.3);
+  --violet2: rgb(162, 63, 190);
+  --violet3: rgba(89, 71, 245, 0.3);
+  --sable1: rgba(227, 209, 183);
+  --sable2: rgb(235, 163, 63);
+  --silver: rgb(192, 192, 192);
+  --white: rgb(255, 255, 255);
+  --blue1: rgb(198, 224, 248);
+  --blue2: rgb(106, 101, 153);
+  --blue3: rgb(56, 34, 252);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -6,34 +19,121 @@
 }
 body {
   position: relative;
-  width: 1440px;
+  max-width: 1440px;
   height: 100vh;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  background: url(./img/bg.png) center/cover no-repeat;
 }
-/* ====================== Aside bar left ====================== */
-.container-current-attributs {
-  height: 60%;
-  width: 110px;
 
-  float: left;
+/* ====================== SHOP Current ====================== */
+.container-current-shop {
+  display: flex;
+  justify-content: flex-start;
+  width: 45%;
+}
+/* ====================== Shop ======================*/
+.shop-container {
+  height: 100%;
+  width: 300px;
+  padding: 10px;
+  background: var(--sable1);
+  overflow: hidden;
+}
+h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+.container-item-shop {
+  list-style: none;
+  height: 95%;
+  padding: 10px;
+  background: var(--sable1);
+  border: 2px solid var(--silver);
+  border-radius: 10px;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+.item-shop {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 2px solid silver;
+  border-radius: 5px;
+  background: var(--violet1);
+}
+.item-shop img {
+  height: 50px;
+  width: 50px;
+  background: var(--white);
+  border-radius: 50px;
+}
+.item-label {
+  background: white;
+  width: 100%;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.btn-buy {
+  font-size: 1.2rem;
+  color: var(--white);
+  padding: 10px;
+  background: var(--violet2);
+  border: 1px solid var(--silver);
+  border-radius: 4px;
+  transition: 0.3s ease-in-out;
+}
+.btn-buy:hover {
+  background: var(--violet3);
+  transition: 0.3s ease-in-out;
+}
+/* ====================== Items Shop Visibility ================================ */
+/* visible mais pas cliquable */
+.item-shop-visible {
+  opacity: 0.6;
+}
+.btn-buy-visible {
+  display: none;
+}
+/* pas visible pas cliquable */
+.item-shop-hidden {
+  background: rgba(0, 0, 0, 0.7);
+}
+.item-shopimg-hidden {
+  filter: opacity(100%) blur(10px) grayscale(100%);
+  transition: 0.3s ease-in-out;
+}
+.btn-buy-hidden {
+  display: none;
+}
+
+/* ====================== Current ================================ */
+.container-current-attributs {
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.item-current {
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-.container-current {
-  position: relative;
-  width: 110px;
-  padding: 10px;
-  border: 1px solid black;
+.item-current img {
+  height: 50px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 10px var(--sable2);
+  background: var(--sable2);
 }
-.container-current img {
-  height: 70px;
-  width: 70px;
-  border-radius: 50px;
-  background: red;
-}
-.container-current span {
+.item-current span {
   position: absolute;
   top: 0;
   left: 0;
@@ -45,134 +145,146 @@ body {
   display: grid;
   place-items: center;
 }
-.container-current p:nth-child(3) {
-  font-size: 1.4rem;
+.item-current p:nth-child(3) {
+  font-size: 1.2rem;
   text-align: center;
   text-transform: bold;
 }
-.container-current p ~ p {
+.item-current p ~ p {
+  font-size: 0.8rem;
   text-align: center;
   text-transform: bold;
+}
+/* ====================== Cauldron Flower Collection  ======================*/
+.container-cauldoron-flower-collection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 /* ====================== Cauldron ====================== */
 .cauldron-container {
-  height: 250px;
-  width: 180px;
-  margin: 0 30% 0 auto;
-}
-.cauldron-container p {
-  font-size: 1.4rem;
-  text-align: center;
-  text-transform: bold;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: end;
 }
 .liquid-container {
-  border: 1px solid black;
-  height: 100%;
-  width: 60%;
+  position: relative;
+  width: 150px;
+  height: 150px;
   border-radius: 60px;
-  margin: 0 auto;
   align-content: end;
+  background: url(./img/chaudron.png) center/cover no-repeat;
 }
 .liquid {
-  height: 50%;
-  width: 100%;
-  border-radius: 0px 0px 60px 60px;
-  background: red;
-}
-/* ====================== Flower ======================*/
-.flower-container {
+  z-index: -1;
   position: absolute;
   top: 0;
   left: 0;
-  height: 400px;
-  width: 400px;
-  border: 1px solid red;
-  margin: 50px 40% 0 auto;
+  height: 60px;
+  width: 60px;
+  background: rgba(162, 0, 255, 0.575);
+  transform: translate(75%, 75%);
+}
+.liquid-container p {
+  font-size: 1.4rem;
+  margin: 0 auto;
+  text-align: center;
+}
+/* ====================== Flower ======================*/
+.container-flower-collection {
+  width: 100%;
+  display: flex;
+}
+.flower-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translate(110%, 90%);
 }
 .flower {
-  height: 250px;
-  width: 250px;
-  margin: 0 auto;
-  border: 1px solid red;
+  height: 300px;
+  width: 300px;
   border-radius: 200px;
+  background: url(./img/flower3.png) center/cover no-repeat;
+  background-size: 85%;
+  box-shadow: 0 0 50px 30px var(--sable1);
+  background-color: var(--sable2);
 }
-
-.flower-container p {
+.flower-count {
+  padding: 20px;
+}
+.flower-count p:nth-child(1) {
+  font-size: 1.8rem;
+  padding: 15px;
+}
+.flower-count p {
   font-size: 1.4rem;
   text-align: center;
 }
-.flower-container p:nth-child(2) {
-  padding: 20px;
-  font-size: 1.8rem;
-  text-transform: bold;
+/* ====================== Btn Collection ======================*/
+.collection-container {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+.collection {
+  border: 2px solid var(--silver);
+  height: 80px;
+  width: 80px;
+  border-radius: 100px;
+  background-color: var(--sable2);
+  color: var(--violet2);
+}
+.collection:hover {
+  background: var(--violet3);
+  transition: 0.3s ease-in-out;
 }
 /* ====================== Familiar ======================*/
 .familiar {
-  float: right;
   height: 100%;
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 .container-pets {
   position: relative;
-  width: 340px;
+  width: 185px;
   overflow: hidden;
 }
 .pets {
-  top: 0;
-  left: 0;
-  background: rgb(180, 180, 180);
-  width: 210px;
-  height: 210px;
+  background: var(--sable2);
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
-  transform: rotate(45deg);
-  border-radius: 0px 500px 500px 500px;
+  border-radius: 500px;
 }
-.pets2 {
+
+.frog {
   position: absolute;
   top: 0;
   left: 0;
-  background: white;
-  border-radius: 50px 0px 200px 00px;
-  transform: translateX(80%) translateY(-16%) rotate(45deg);
-  height: 130px;
-  width: 130px;
-}
-.frog,
-.cat,
-.dragon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgb(86, 86, 86);
-  transform: translateX(160%) translateY(70%);
-  height: 80px;
+  background: rgb(255, 255, 255);
+  transform: translateX(83%) translateY(0%);
+  height: 70px;
+  width: 70px;
   border-radius: 100px;
 }
-.container-items-frog,
-.container-items-cat,
-.container-items-dragon {
+.container-items-frog {
   position: absolute;
   top: 0;
   left: 0;
-  height: 300px;
-  width: 300px;
+  height: 100px;
+  width: 100px;
   transform: translateX(8%);
   border-radius: 200px;
   display: flex;
   justify-content: space-around;
   list-style: none;
 }
-.items-frog,
-.items-cat,
-.items-dragon {
+.items-frog {
   position: absolute;
   top: 0;
   left: 0;
@@ -185,9 +297,7 @@ body {
   border-radius: 100px;
   transition: 0.8s ease-in-out;
 }
-.hover-items-frog,
-.hover-items-cat,
-.hover-items-dragon {
+.hover-items-frog {
   position: absolute;
   height: 60px;
   width: 130px;
@@ -199,67 +309,107 @@ body {
   visibility: hidden;
   transition: 0.3s ease-in-out;
 }
-.hover-items-frog:hover,
-.hover-items-cat:hover,
-.hover-items-dragon:hover {
+.hover-items-frog:hover {
   z-index: 1;
   transform: scale(1.1);
   transition: 0.8s ease-in-out;
 }
-.hover-items-frog,
-.hover-items-cat,
-.hover-items-dragon {
+.hover-items-frog {
   z-index: 3;
   opacity: 1;
   visibility: visible;
   transition: 0.3s ease-in-out;
 }
-
-.items-frog:nth-child(1),
-.items-cat:nth-child(1),
-.items-dragon:nth-child(1) {
+.items-frog:nth-child(1) {
   transform: translate(0%, 140%);
   transition: 0.8s ease-in-out;
 }
-.items-frog:nth-child(2),
-.items-cat:nth-child(2),
-.items-dragon:nth-child(2) {
+.items-frog:nth-child(2) {
   transform: translate(40%, 235%);
   transition: 0.8s ease-in-out;
 }
-.items-frog:nth-child(3),
-.items-cat:nth-child(3),
-.items-dragon:nth-child(3) {
+.items-frog:nth-child(3) {
   transform: translate(137%, 275%);
   transition: 0.8s ease-in-out;
 }
-.items-frog:nth-child(4),
-.items-cat:nth-child(4),
-.items-dragon:nth-child(4) {
+.items-frog:nth-child(4) {
   transform: translate(235%, 235%);
   transition: 0.8s ease-in-out;
 }
-.items-frog:nth-child(5),
-.items-cat:nth-child(5),
-.items-dragon:nth-child(5) {
+.items-frog:nth-child(5) {
   transform: translate(275%, 140%);
   transition: 0.8s ease-in-out;
 }
-
-/* ====================== Familiar ======================*/
-.container-body-bottom {
+/* ====================== Window Collection ======================*/
+.container-collection {
   position: absolute;
+  top: 0;
   left: 0;
-  bottom: 0;
+  transform: translate(150%, 40%);
+  padding: 0px 20px 20px 20px;
+  height: 500px;
+  width: 400px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--blue2);
+  transition: 0.8s ease-in-out;
+  z-index: 5;
+}
+.close {
+  border: 1px solid var(--silver);
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+  background: url(./img/arrow-removebg-preview.png) center/cover no-repeat,
+    var(--white);
+  transform: rotate(180deg);
+  align-self: flex-end;
+  z-index: 1;
+  transition: 0.3s ease-in-out;
+}
+.close:hover {
+  background: url(./img/arrow-removebg-preview.png) center/cover no-repeat,
+    var(--violet1);
+  transition: 0.3s ease-in-out;
+}
+.ul-collection {
+  width: 100%;
+  height: 100%;
+  background: var(--blue1);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+.item-collection {
   display: flex;
   justify-content: space-between;
-  width: 30%;
-  height: 40%;
-  border: 1px solid black;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 2px solid silver;
+  border-radius: 5px;
+  background: var(--violet1);
 }
-/* ====================== Familiar ======================*/
-.shop-container {
-  border: 1px solid black;
-  height: 100%;
-  width: 70%;
+.item-collection img {
+  height: 50px;
+  width: 50px;
+  background: var(--white);
+  border-radius: 50px;
+}
+.item-label {
+  background: white;
+  width: 100%;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 5px;
 }
