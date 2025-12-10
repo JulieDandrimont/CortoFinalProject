@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 @import url("https://p.typekit.net/p.css?s=1&k=gxm3lqh&ht=tk&f=10879.10884.15586.15848.32224.32227.32228.32231&a=112030413&app=typekit&e=css");
-=======
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
 :root {
   --violet1: rgba(217, 213, 255, 0.3);
   --violet2: rgb(162, 63, 190);
@@ -21,22 +18,17 @@
   box-sizing: border-box;
   font-size: 14px;
   font-family: "futura-pt";
-  font-weight: 400;
+  color: rgb(57, 57, 57);
 }
 
 body {
   position: relative;
-<<<<<<< HEAD
   /* max-width: 1440px; */
-=======
-  max-width: 1440px;
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   height: 100vh;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   background: url(./img/bg.png) center/cover no-repeat;
-<<<<<<< HEAD
 }
 .cursor {
   position: absolute;
@@ -45,7 +37,6 @@ body {
   height: 50px;
   width: 50px;
   transform: translate(-50%, -50%);
-  /* transition: 0.2s ease-out; */
   z-index: 1;
   background: url(./img/cursor_flower.png) center/cover no-repeat;
 }
@@ -57,21 +48,29 @@ body {
 }
 /* ====================== shop ======================*/
 .shop-container {
-  height: 100%;
+  height: 90%;
   width: 300px;
   padding: 10px;
-  background: var(--sable1);
+  margin: auto 10px;
+  background: linear-gradient(
+    45deg,
+    rgba(187, 119, 255, 0.676),
+    rgba(213, 227, 233, 0.676)
+  );
+  border-radius: 20px;
   overflow: auto;
+  box-shadow: 0px 0px 40px 30px rgba(230, 204, 255, 0.478);
 }
 h1 {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 .container-item-shop {
   list-style: none;
   height: 90%;
   padding: 10px;
-  background: var(--sable1);
+  background: rgb(255, 241, 241);
   border: 2px solid var(--silver);
   border-radius: 10px;
   overflow: scroll;
@@ -140,43 +139,8 @@ h1 {
 }
 /* ====================== Visibility ================================ */
 
-/* Display none */
-
 /* visible mais pas cliquable */
 .item-shop-visibility {
-=======
-}
-
-/* ====================== SHOP Current ====================== */
-.container-current-shop {
-  display: flex;
-  justify-content: flex-start;
-  width: 45%;
-}
-/* ====================== Shop ======================*/
-.shop-container {
-  height: 100%;
-  width: 300px;
-  padding: 10px;
-  background: var(--sable1);
-  overflow: hidden;
-}
-h1 {
-  text-align: center;
-  font-size: 3rem;
-}
-.container-item-shop {
-  list-style: none;
-  height: 95%;
-  padding: 10px;
-  background: var(--sable1);
-  border: 2px solid var(--silver);
-  border-radius: 10px;
-  overflow: scroll;
-  scrollbar-width: none;
-}
-.item-shop {
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -186,7 +150,6 @@ h1 {
   border: 2px solid silver;
   border-radius: 5px;
   background: var(--violet1);
-<<<<<<< HEAD
   opacity: 0.5;
 }
 
@@ -213,56 +176,6 @@ h1 {
 }
 
 /* ====================== current ================================ */
-=======
-}
-.item-shop img {
-  height: 50px;
-  width: 50px;
-  background: var(--white);
-  border-radius: 50px;
-}
-.item-label {
-  background: white;
-  width: 100%;
-  margin: 0 5px;
-  padding: 5px;
-  border-radius: 5px;
-}
-.btn-buy {
-  font-size: 1.2rem;
-  color: var(--white);
-  padding: 10px;
-  background: var(--violet2);
-  border: 1px solid var(--silver);
-  border-radius: 4px;
-  transition: 0.3s ease-in-out;
-}
-.btn-buy:hover {
-  background: var(--violet3);
-  transition: 0.3s ease-in-out;
-}
-/* ====================== Items Shop Visibility ================================ */
-/* visible mais pas cliquable */
-.item-shop-visible {
-  opacity: 0.6;
-}
-.btn-buy-visible {
-  display: none;
-}
-/* pas visible pas cliquable */
-.item-shop-hidden {
-  background: rgba(0, 0, 0, 0.7);
-}
-.item-shopimg-hidden {
-  filter: opacity(100%) blur(10px) grayscale(100%);
-  transition: 0.3s ease-in-out;
-}
-.btn-buy-hidden {
-  display: none;
-}
-
-/* ====================== Current ================================ */
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
 .container-current-attributs {
   height: 100%;
   width: auto;
@@ -271,10 +184,7 @@ h1 {
   justify-content: flex-start;
 }
 .item-current {
-<<<<<<< HEAD
   position: relative;
-=======
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
@@ -282,11 +192,7 @@ h1 {
   align-items: center;
 }
 .item-current img {
-<<<<<<< HEAD
   height: 40px;
-=======
-  height: 50px;
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   border-radius: 30px;
   box-shadow: 0 0 10px 10px var(--sable2);
   background: var(--sable2);
@@ -313,7 +219,6 @@ h1 {
   text-align: center;
   text-transform: bold;
 }
-<<<<<<< HEAD
 .current-level {
   position: absolute;
   top: 0;
@@ -329,9 +234,6 @@ h1 {
   font-size: 0.8rem;
 }
 /* ======================  ======================*/
-=======
-/* ====================== Cauldron Flower Collection  ======================*/
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
 .container-cauldoron-flower-collection {
   width: 100%;
   display: flex;
@@ -348,7 +250,6 @@ h1 {
 }
 .liquid-container {
   position: relative;
-<<<<<<< HEAD
   width: 110px;
   height: 110px;
   align-content: end;
@@ -356,21 +257,10 @@ h1 {
   background: url(./img/cauldron.png) center/cover no-repeat;
 }
 .counter-boost {
-=======
-  width: 150px;
-  height: 150px;
-  border-radius: 60px;
-  align-content: end;
-  background: url(./img/chaudron.png) center/cover no-repeat;
-}
-.liquid {
-  z-index: -1;
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   position: absolute;
   content: "";
   top: 0;
   left: 0;
-<<<<<<< HEAD
   transform: translate(60%, 50%);
   background: var(--violet3);
   height: 70px;
@@ -389,12 +279,6 @@ h1 {
   width: 70px;
   background: rgb(47, 252, 184);
   transform: translate(56%, 65%);
-=======
-  height: 60px;
-  width: 60px;
-  background: rgba(162, 0, 255, 0.575);
-  transform: translate(75%, 75%);
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
 }
 .liquid-container p {
   font-size: 1.4rem;
@@ -414,13 +298,8 @@ h1 {
   align-items: center;
 }
 .flower {
-<<<<<<< HEAD
   max-height: 500px;
   width: 400px;
-=======
-  height: 300px;
-  width: 300px;
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   border-radius: 200px;
   background: url(./img/flower3.png) center/cover no-repeat;
   background-size: 85%;
@@ -438,27 +317,28 @@ h1 {
   font-size: 1.4rem;
   text-align: center;
 }
-<<<<<<< HEAD
-=======
-/* ====================== Btn Collection ======================*/
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
+/* ====================== BTN-Collection ======================*/
 .collection-container {
   margin-top: auto;
   margin-bottom: 20px;
 }
 .collection {
-  border: 2px solid var(--silver);
-  height: 80px;
-  width: 80px;
+  border: none;
+  height: 130px;
+  width: 130px;
+  background-color: rgb(189, 213, 232);
+  font-size: 2.2rem;
   border-radius: 100px;
-  background-color: var(--sable2);
-  color: var(--violet2);
+  transition: 1s ease-in-out;
 }
 .collection:hover {
-  background: var(--violet3);
-  transition: 0.3s ease-in-out;
+  background: linear-gradient(
+    130deg,
+    rgba(187, 119, 255, 0.676),
+    rgba(213, 227, 233, 0.676)
+  );
+  transition: 1s ease-in-out;
 }
-/* ====================== Familiar ======================*/
 .familiar {
   height: 100%;
   display: flex;
@@ -466,15 +346,10 @@ h1 {
   align-items: center;
   transition: 0.4s ease-in-out;
   opacity: 0;
+  background: red;
 }
-<<<<<<< HEAD
 .container-pet {
-=======
-.container-pets {
-  position: relative;
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   width: 185px;
-  overflow: hidden;
 }
 .pets {
   background: var(--sable2);
@@ -484,16 +359,11 @@ h1 {
   border-radius: 500px;
 }
 
-<<<<<<< HEAD
 .frog1 {
-=======
-.frog {
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   position: absolute;
   top: 0;
   left: 0;
   background: rgb(255, 255, 255);
-<<<<<<< HEAD
   height: 70px;
   width: 70px;
   border-radius: 100px;
@@ -502,22 +372,15 @@ h1 {
   /* animation: anim 10s forwards; */
 }
 .frog2 {
-  display: block;
+  /* display: block; */
   position: absolute;
   top: 0;
   left: 0;
   background: transparent;
-=======
-  transform: translateX(83%) translateY(0%);
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   height: 70px;
   width: 70px;
   border-radius: 100px;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
 .container-items-frog {
   position: absolute;
   top: 0;
@@ -586,7 +449,6 @@ h1 {
   transform: translate(275%, 140%);
   transition: 0.8s ease-in-out;
 }
-<<<<<<< HEAD
 /* ====================== Collection ======================*/
 .container-collection {
   position: absolute;
@@ -597,27 +459,12 @@ h1 {
   max-width: 400px;
   display: none;
   flex-direction: column;
-=======
-/* ====================== Window Collection ======================*/
-.container-collection {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(150%, 40%);
-  padding: 0px 20px 20px 20px;
-  height: 500px;
-  width: 400px;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
   align-items: center;
   border-radius: 10px;
   background: var(--blue2);
   transition: 0.8s ease-in-out;
   z-index: 5;
 }
-<<<<<<< HEAD
 .contairner-title-arrow {
   display: flex;
   justify-content: space-between;
@@ -664,50 +511,6 @@ h1 {
   border-radius: 5px;
   background: var(--violet1);
 }
-=======
-.close {
-  border: 1px solid var(--silver);
-  border-radius: 20px;
-  padding: 15px;
-  margin: 10px;
-  background: url(./img/arrow-removebg-preview.png) center/cover no-repeat,
-    var(--white);
-  transform: rotate(180deg);
-  align-self: flex-end;
-  z-index: 1;
-  transition: 0.3s ease-in-out;
-}
-.close:hover {
-  background: url(./img/arrow-removebg-preview.png) center/cover no-repeat,
-    var(--violet1);
-  transition: 0.3s ease-in-out;
-}
-.ul-collection {
-  width: 100%;
-  height: 100%;
-  background: var(--blue1);
-  border-radius: 10px;
-  padding: 10px;
-  margin: 0 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: scroll;
-  scrollbar-width: none;
-}
-.item-collection {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 5px;
-  border: 2px solid silver;
-  border-radius: 5px;
-  background: var(--violet1);
-}
->>>>>>> 605bdc8d29310c6ad6db7998878d46fbb1f202f3
 .item-collection img {
   height: 50px;
   width: 50px;
