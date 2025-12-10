@@ -25,6 +25,7 @@ body {
   display: flex;
   justify-content: space-between;
   background: url(./img/bg.png) center/cover no-repeat;
+  user-select: none;
 }
 
 /* ====================== SHOP Current ====================== */
