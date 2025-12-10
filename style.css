@@ -10,6 +10,8 @@
   --blue1: rgb(198, 224, 248);
   --blue2: rgb(106, 101, 153);
   --blue3: rgb(56, 34, 252);
+  --color1: rgba(200, 150, 250, 0.676);
+  --color2: rgba(213, 227, 233, 0.676);
 }
 
 * {
@@ -23,12 +25,19 @@
 
 body {
   position: relative;
-  /* max-width: 1440px; */
+  max-width: 1440px;
   height: 100vh;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   background: url(./img/bg.png) center/cover no-repeat;
+}
+h2 {
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+p {
+  font-size: 1.2rem;
 }
 .cursor {
   position: absolute;
@@ -54,7 +63,7 @@ body {
   margin: auto 10px;
   background: linear-gradient(
     45deg,
-    rgba(187, 119, 255, 0.676),
+    rgba(200, 150, 250, 0.676),
     rgba(213, 227, 233, 0.676)
   );
   border-radius: 20px;
@@ -117,65 +126,21 @@ h1 {
   background: var(--violet2);
   border: 1px solid var(--silver);
   border-radius: 4px;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 .buy-btn:hover {
   background: var(--violet3);
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
-.hover-stat-shop {
-  display: none;
+.stat-shop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .item-shop:hover {
-  .hover-stat-shop {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    background: var(--violet3);
-    border-radius: 5px;
-    padding: 15px;
-  }
+  background: var(--violet3);
 }
-/* ====================== Visibility ================================ */
-
-/* visible mais pas cliquable */
-.item-shop-visibility {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  margin-bottom: 5px;
-  border: 2px solid silver;
-  border-radius: 5px;
-  background: var(--violet1);
-  opacity: 0.5;
-}
-
-/* pas visible pas cliquable */
-
-.item-shop-hidden {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  margin-bottom: 5px;
-  border: 2px solid silver;
-  border-radius: 5px;
-  background: rgba(0, 0, 0);
-  opacity: 0.6;
-
-  .img-shop {
-    filter: blur(8px);
-  }
-  .item-label {
-    display: none;
-  }
-}
-
-/* ====================== current ================================ */
+/* ============ current ============ */
 .container-current-attributs {
   height: 100%;
   width: auto;
@@ -192,22 +157,23 @@ h1 {
   align-items: center;
 }
 .item-current img {
-  height: 40px;
+  max-height: 70px;
   border-radius: 30px;
-  box-shadow: 0 0 10px 10px var(--sable2);
-  background: var(--sable2);
-}
-.item-current span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 30px;
-  width: 30px;
-  border-radius: 20px;
-  border: 1px solid black;
-  transform: translate(190%, 10%);
-  display: grid;
-  place-items: center;
+  box-shadow: 0 0 10px 10px rgba(213, 227, 233, 0.676);
+  background: rgba(213, 227, 233, 0.676);
+
+  .item-current span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    border: 1px solid black;
+    transform: translate(190%, 10%);
+    display: grid;
+    place-items: center;
+  }
 }
 .item-current p:nth-child(3) {
   font-size: 1.2rem;
@@ -215,23 +181,18 @@ h1 {
   text-transform: bold;
 }
 .item-current p ~ p {
-  font-size: 0.8rem;
+  font-size: 1.4rem;
   text-align: center;
-  text-transform: bold;
 }
 .current-level {
   position: absolute;
   top: 0;
   right: 0;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 20px;
   background: var(--violet3);
-  box-shadow: 0 0 2px 3px var(--violet3);
-  transform: translate(-100%, 60%);
-}
-.current-effect {
-  font-size: 0.8rem;
+  transform: translate(-60%, 60%);
 }
 /* ======================  ======================*/
 .container-cauldoron-flower-collection {
@@ -242,29 +203,39 @@ h1 {
 }
 /* ====================== Cauldron ====================== */
 .cauldron-container {
-  width: auto;
+  width: 70%;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: end;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(200, 150, 250, 0.17);
+  box-shadow: 0 0 10px 50px rgba(200, 150, 250, 0.17);
+  border-radius: 0 0 200px 200px;
+}
+.info {
+  width: 60%;
+  height: 60%;
+  border: 1px solid red;
 }
 .liquid-container {
-  position: relative;
-  width: 110px;
-  height: 110px;
-  align-content: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   overflow: hidden;
-  background: url(./img/cauldron.png) center/cover no-repeat;
+}
+.liquid-container img {
+  position: relative;
+  width: 120px;
+  height: 120px;
 }
 .counter-boost {
   position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  transform: translate(60%, 50%);
+  transform: translate(70%, -35%);
   background: var(--violet3);
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   color: rgb(255, 255, 255);
   font-size: 4.8rem;
   margin: 0 auto;
@@ -277,13 +248,10 @@ h1 {
   bottom: 0;
   height: 50px;
   width: 50px;
-  background: rgb(47, 252, 184);
-  transform: translate(58%, -50%);
+  background: rgb(48, 33, 51);
 }
 .liquid-container p {
   font-size: 1.4rem;
-  margin: 0 auto;
-  text-align: center;
 }
 /* ====================== Flower ======================*/
 .container-flower-collection {
@@ -298,13 +266,13 @@ h1 {
   align-items: center;
 }
 .flower {
-  max-height: 500px;
-  width: 500px;
+  max-height: 400px;
+  width: 400px;
   border-radius: 300px;
   background: url(./img/flower3.png) center/cover no-repeat;
   background-size: 85%;
-  box-shadow: 0 0 50px 30px var(--sable1);
-  background-color: var(--sable2);
+  box-shadow: 0 0 50px 30px rgba(255, 245, 203, 0.825);
+  background-color: rgba(255, 245, 203, 0.705);
 }
 .flower-count {
   padding: 20px;
@@ -313,7 +281,7 @@ h1 {
   font-size: 1.8rem;
   padding: 15px;
 }
-.flower-count p {
+.flower-count p ~ span {
   font-size: 1.4rem;
   text-align: center;
 }
@@ -326,18 +294,16 @@ h1 {
   border: none;
   height: 130px;
   width: 130px;
-  background-color: rgb(189, 213, 232);
   font-size: 2.2rem;
   border-radius: 100px;
-  transition: 1s ease-in-out;
+  background-color: rgba(213, 227, 233, 0.676);
+  box-shadow: 0 0 10px 10px rgba(213, 227, 233, 0.676);
+  transition: 0.3s ease-in-out;
 }
 .collection:hover {
-  background: linear-gradient(
-    130deg,
-    rgba(187, 119, 255, 0.676),
-    rgba(213, 227, 233, 0.676)
-  );
-  transition: 1s ease-in-out;
+  background: rgba(200, 150, 250, 0.363);
+  box-shadow: 0 0 50px 30px rgba(200, 150, 250, 0.441);
+  transition: 0.3s ease-in-out;
 }
 .familiar {
   height: 100%;

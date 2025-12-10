@@ -23,8 +23,10 @@ let shopItems = document.querySelector(".container-item-shop"); // récupère le
 let currentItems = document.querySelector(".container-current-attributs");
 let collectItems = document.querySelector(".ul-collection")
 
-let flowerCount = document.querySelector(".flower-count > h3 span");
-let flowerCountCumul = document.querySelector(".flower-count > h3 ~ p span");
+let flowerCount = document.querySelector(".flower-count > h2 span");
+let flowerCountCumul = document.querySelector(".flower-count p > span");
+console.log(flowerCountCumul);
+
 
 let spendableFlowers = parseFloat(flowerCount.textContent) || 0; // Récupère le nombre de fleurs disponibles pour l'achat
 let intFlowerCountCumul = parseFloat(flowerCountCumul.textContent) || 0;
@@ -130,15 +132,14 @@ class items {
     this.li = li;
     this.li.innerHTML = `
     <img src="${this.img}" alt="${this.name}" class="img-shop" />
-    <div class="item-label">
-    <h3>${this.name}</h3>
-    <p> <span class="item-price">${this.price}</span> F</p>
-    </div>
+      <div class="item-label">
+        <h3>${this.name}</h3>
+        <div class="stat-shop">
+          <p> <span class="item-price">${this.price}</span> F</p>
+          <p>+<span class = "item-effect">${this.effect}</span></p>
+        </div>
+      </div>
     <button class="buy-btn">Buy</button>
-    <div class="hover-stat-shop">
-    <p> <span class="item-owned">${this.level}</span></p>
-    <p>+<span class = "item-effect">${this.effect}</span></p>
-    </div>
     `;
 
     const buyBtn = this.li.querySelector(".buy-btn"); //Retrieve the buy button
@@ -172,8 +173,8 @@ class items {
 
       const priceSpan = this.li.querySelector(".item-price");
       priceSpan.innerHTML = this.price; // Met à jour le prix affiché
-      const ownedSpan = this.li.querySelector(".item-owned");
-      ownedSpan.innerHTML = this.level; // Met à jour la quantité possédée
+      // const ownedSpan = this.li.querySelector(".item-owned");
+      // ownedSpan.innerHTML = this.level; // Met à jour la quantité possédée
       const effectSpan = this.li.querySelector(".item-effect");
       effectSpan.innerHTML = (this.effect * this.level).toFixed(2); // Met à jour l'effet affiché
 
@@ -267,6 +268,10 @@ goldenEgg.createItem();
 function displayshop() {
   // It checks the threshold and displays the result based on the available funds or the number of flowers collected.
   items.listItems.forEach((item) => {
+    // if (item.current === false && item.level >= 1) {
+    //   item.li.style.display = "none";
+    //   return; // Ne pas afficher l'item s'il est déjà acheté
+    // }
     // If cumul and threshold
     if (intFlowerCountCumul < item.threshold) {
       item.li.style.display = "none"
@@ -283,6 +288,7 @@ function displayshop() {
     item.li.style.opacity = 1
     item.li.style.display = "flex"
     shopItems.appendChild(item.li)
+
   });
 }
 
@@ -294,19 +300,19 @@ function updateLiquidAnimation() {
 
   if (intFlowerCountCumul % 100 == 0) {
     liquid.style.height = "10px";
-    liquid.style.transform = "translate(58%, -200%)";
+    liquid.style.transform = "translate(70%, -210%)";
   } else if (intFlowerCountCumul % 500 == 0) {
     liquid.style.height = "15px";
-    liquid.style.transform = "translate(58%, -150%)";
+    liquid.style.transform = "translate(70%, -150%)";
   } else if (intFlowerCountCumul % 800 == 0) {
     liquid.style.height = "20px";
-    liquid.style.transform = "translate(58%, -100%)";
+    liquid.style.transform = "translate(70%, -100%)";
   } else if (intFlowerCountCumul % 1300 == 0) {
     liquid.style.height = "30px";
-    liquid.style.transform = "translate(58%, -80%)";
+    liquid.style.transform = "translate(70%, -80%)";
   } else if (intFlowerCountCumul % 1700 == 0 && !isBoostActivve) {
     liquid.style.height = "50px";
-    liquid.style.transform = "translate(58%, -50%)";
+    liquid.style.transform = "translate(70%, -50%)";
     //if its diferente to false 
     activateBoost();
     // Launch the boost automatically if it's not already active.
@@ -350,7 +356,7 @@ const popFrog = () => {
   btnFrog.style.top = Math.random() * 90 + "%";
   btnFrog.style.left = Math.random() * 90 + "%";
   btnFrog.style.transition = "0.3s ease-in-out"
-  // onclick you own +5 flowers and frog display in the game
+  // onclick you own + 5 flowers and frog display in the game
   btnFrog.addEventListener("click", () => {
     btnFrog.remove()
     displayFrog = true
