@@ -1,18 +1,5 @@
 @import url("https://p.typekit.net/p.css?s=1&k=gxm3lqh&ht=tk&f=10879.10884.15586.15848.32224.32227.32228.32231&a=112030413&app=typekit&e=css");
-:root {
-  --violet1: rgba(217, 213, 255, 0.3);
-  --violet2: rgb(162, 63, 190);
-  --violet3: rgba(89, 71, 245, 0.3);
-  --sable1: rgba(227, 209, 183);
-  --sable2: rgb(235, 163, 63);
-  --silver: rgb(192, 192, 192);
-  --white: rgb(255, 255, 255);
-  --blue1: rgb(198, 224, 248);
-  --blue2: rgb(106, 101, 153);
-  --blue3: rgb(56, 34, 252);
-  --color1: rgba(200, 150, 250, 0.676);
-  --color2: rgba(213, 227, 233, 0.676);
-}
+@import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap");
 
 * {
   padding: 0;
@@ -20,7 +7,8 @@
   box-sizing: border-box;
   font-size: 14px;
   font-family: "futura-pt";
-  color: rgb(57, 57, 57);
+  color: rgb(85, 85, 85);
+  transition: 0.4s ease-in-out;
 }
 
 body {
@@ -31,6 +19,12 @@ body {
   display: flex;
   justify-content: space-between;
   background: url(./img/bg.png) center/cover no-repeat;
+}
+.name {
+  font-family: "Aladin", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  padding: 10px;
 }
 h2 {
   font-size: 3rem;
@@ -50,12 +44,13 @@ p {
   background: url(./img/cursor_flower.png) center/cover no-repeat;
 }
 /* ====================== Aside bar left ====================== */
-.container-current-shop {
+.container-current-shop-collection {
   display: flex;
+  justify-content: center;
+  align-items: center;
   justify-content: flex-start;
   width: 45%;
 }
-/* ====================== shop ======================*/
 .shop-container {
   height: 90%;
   width: 300px;
@@ -80,7 +75,7 @@ h1 {
   height: 90%;
   padding: 10px;
   background: rgb(255, 241, 241);
-  border: 2px solid var(--silver);
+  border: 2px solid silver;
   border-radius: 10px;
   overflow: scroll;
   scrollbar-width: none;
@@ -94,12 +89,12 @@ h1 {
   margin-bottom: 5px;
   border: 2px solid silver;
   border-radius: 5px;
-  background: var(--violet1);
+  background: rgba(217, 213, 255, 0.3);
 }
 .img-shop {
   height: 50px;
   width: 50px;
-  background: var(--white);
+  background: white;
   border-radius: 50px;
 }
 .item-label {
@@ -113,7 +108,7 @@ h1 {
   position: absolute;
   top: 0;
   right: 0;
-  background: var(--sable1);
+  background: rgba(227, 209, 183);
   visibility: hidden;
 }
 .item-shop:hover .hover-item {
@@ -121,15 +116,15 @@ h1 {
 }
 .buy-btn {
   font-size: 1.2rem;
-  color: var(--white);
+  color: white;
   padding: 10px;
-  background: var(--violet2);
-  border: 1px solid var(--silver);
+  background: rgb(162, 63, 190);
+  border: 1px solid silver;
   border-radius: 4px;
   transition: 0.2s ease-in-out;
 }
 .buy-btn:hover {
-  background: var(--violet3);
+  background: rgba(89, 71, 245, 0.3);
   transition: 0.2s ease-in-out;
 }
 .stat-shop {
@@ -138,12 +133,23 @@ h1 {
   align-items: center;
 }
 .item-shop:hover {
-  background: var(--violet3);
+  background: rgba(89, 71, 245, 0.3);
+}
+/* ============ current-collection ============ */
+
+.container-current-collection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  height: 90%;
+  transition: 0.4s ease-in-out;
+  overflow: hidden;
+  overflow: scroll;
+  scrollbar-width: none;
 }
 /* ============ current ============ */
 .container-current-attributs {
-  height: 100%;
-  width: auto;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -153,7 +159,7 @@ h1 {
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 .item-current img {
@@ -176,12 +182,12 @@ h1 {
   }
 }
 .item-current p:nth-child(3) {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   text-align: center;
   text-transform: bold;
 }
 .item-current p ~ p {
-  font-size: 1.4rem;
+  font-size: 1rem;
   text-align: center;
 }
 .current-level {
@@ -191,11 +197,31 @@ h1 {
   height: 20px;
   width: 20px;
   border-radius: 20px;
-  background: var(--violet3);
+  background: rgba(89, 71, 245, 0.3);
   transform: translate(-60%, 60%);
 }
-/* ======================  ======================*/
-.container-cauldoron-flower-collection {
+/* ====================== BTN-Collection ======================*/
+.container-btn-collection {
+  height: 90%;
+  align-content: flex-end;
+}
+.btn-collection {
+  border: none;
+  height: 100px;
+  width: 100%;
+  font-size: 2.2rem;
+  border-radius: 100px;
+  background-color: rgba(213, 227, 233, 0.676);
+  box-shadow: 0 0 10px 10px rgba(213, 227, 233, 0.676);
+  transition: 0.3s ease-in-out;
+}
+.btn-collection:hover {
+  background: rgba(200, 150, 250, 0.363);
+  box-shadow: 0 0 50px 30px rgba(200, 150, 250, 0.441);
+  transition: 0.3s ease-in-out;
+}
+/* ====================== cauldron-Flower ======================*/
+.container-cauldoron-flower {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -204,7 +230,6 @@ h1 {
 /* ====================== Cauldron ====================== */
 .cauldron-container {
   width: 70%;
-  margin: 0 auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -213,11 +238,19 @@ h1 {
   border-radius: 0 0 200px 200px;
 }
 .info {
-  width: 60%;
-  height: 60%;
-  border: 1px solid red;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid silver;
+  border-radius: 10px;
+  text-align: center;
 }
+.info p {
+  color: rgb(109, 109, 109);
+}
+/*
 .liquid-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -227,13 +260,12 @@ h1 {
 }
 .liquid-container img {
   position: relative;
-  width: 120px;
-  height: 120px;
+  height: 100px;
 }
 .counter-boost {
   position: absolute;
   transform: translate(70%, -35%);
-  background: var(--violet3);
+  background: rgba(89, 71, 245, 0.3);
   height: 50px;
   width: 50px;
   color: rgb(255, 255, 255);
@@ -248,11 +280,12 @@ h1 {
   bottom: 0;
   height: 50px;
   width: 50px;
-  background: rgb(48, 33, 51);
+  background: rgb(194, 100, 212);
 }
 .liquid-container p {
   font-size: 1.4rem;
 }
+*/
 /* ====================== Flower ======================*/
 .container-flower-collection {
   width: 100%;
@@ -266,8 +299,8 @@ h1 {
   align-items: center;
 }
 .flower {
-  max-height: 400px;
-  width: 400px;
+  max-height: 350px;
+  width: 350px;
   border-radius: 300px;
   background: url(./img/flower3.png) center/cover no-repeat;
   background-size: 85%;
@@ -285,63 +318,59 @@ h1 {
   font-size: 1.4rem;
   text-align: center;
 }
-/* ====================== BTN-Collection ======================*/
-.collection-container {
-  margin-top: auto;
-  margin-bottom: 20px;
-}
-.collection {
-  border: none;
-  height: 130px;
-  width: 130px;
-  font-size: 2.2rem;
-  border-radius: 100px;
-  background-color: rgba(213, 227, 233, 0.676);
-  box-shadow: 0 0 10px 10px rgba(213, 227, 233, 0.676);
-  transition: 0.3s ease-in-out;
-}
-.collection:hover {
-  background: rgba(200, 150, 250, 0.363);
-  box-shadow: 0 0 50px 30px rgba(200, 150, 250, 0.441);
-  transition: 0.3s ease-in-out;
-}
-.familiar {
+/* ====================== container pet, library collection ======================*/
+.container-pet-collection {
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   transition: 0.4s ease-in-out;
-  opacity: 0;
-  background: red;
+  opacity: 1;
 }
 .container-pet {
   width: 185px;
+  height: 185px;
+  opacity: 0;
 }
-.pets {
-  background: var(--sable2);
+.pet {
+  background: rgba(213, 227, 233, 0.676);
+  box-shadow: 0 0 10px 10px rgba(213, 227, 233, 0.676);
   width: 150px;
   height: 150px;
   margin: 0 auto;
   border-radius: 500px;
+  transition: 0.3s ease-in-out;
+}
+.stat-frog {
+  visibility: hidden;
+  position: absolute;
+  background: rgba(200, 150, 250, 0.363);
+  box-shadow: 0 0 50px 30px rgba(200, 150, 250, 0.441);
+  transform: translateX(100%) translateY(100%);
+}
+.pets:hover {
+  background: rgba(200, 150, 250, 0.363);
+  box-shadow: 0 0 50px 30px rgba(200, 150, 250, 0.441);
+  transition: 0.4s ease-in-out;
 }
 
 .frog1 {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgb(255, 255, 255);
-  height: 70px;
-  width: 70px;
+  background: rgb(213, 227, 233);
+  box-shadow: 0 0 10px 10px rgb(213, 227, 233);
+  height: 100px;
+  width: 100px;
   border-radius: 100px;
-  transform: translate(60%, 55%);
+  transform: translate(25%, 25%);
   visibility: hidden;
-  /* animation: anim 10s forwards; */
 }
 .frog2 {
-  /* display: block; */
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   background: transparent;
   height: 70px;
   width: 70px;
@@ -384,79 +413,48 @@ h1 {
   visibility: hidden;
   transition: 0.3s ease-in-out;
 }
-.hover-items-frog:hover {
-  z-index: 1;
-  transform: scale(1.1);
-  transition: 0.8s ease-in-out;
-}
-.hover-items-frog {
-  z-index: 3;
-  opacity: 1;
-  visibility: visible;
-  transition: 0.3s ease-in-out;
-}
-.items-frog:nth-child(1) {
-  transform: translate(0%, 140%);
-  transition: 0.8s ease-in-out;
-}
-.items-frog:nth-child(2) {
-  transform: translate(40%, 235%);
-  transition: 0.8s ease-in-out;
-}
-.items-frog:nth-child(3) {
-  transform: translate(137%, 275%);
-  transition: 0.8s ease-in-out;
-}
-.items-frog:nth-child(4) {
-  transform: translate(235%, 235%);
-  transition: 0.8s ease-in-out;
-}
-.items-frog:nth-child(5) {
-  transform: translate(275%, 140%);
-  transition: 0.8s ease-in-out;
-}
-/* ====================== Collection ======================*/
+/* ====================== library Collection ======================*/
 .container-collection {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   padding: 0px 20px 20px 20px;
-  max-height: 500px;
-  max-width: 400px;
+  max-width: 100%;
+  margin-top: 30px;
   display: none;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   border-radius: 10px;
-  background: var(--blue2);
+  background: rgb(213, 227, 233);
+  box-shadow: 0 0 10px 10px rgb(213, 227, 233);
   transition: 0.8s ease-in-out;
   z-index: 5;
+  overflow: hidden;
 }
-.contairner-title-arrow {
+.contairner-title-cross {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .close {
-  border: 1px solid var(--silver);
+  border: 1px solid silver;
   border-radius: 20px;
   padding: 15px;
   margin: 10px;
-  background: url(./img/cross-removebg.png) center/cover no-repeat, var(--white);
+  background: url(./img/cross.png) center/cover no-repeat, white;
   transform: rotate(180deg);
   align-self: flex-end;
   z-index: 1;
   transition: 0.3s ease-in-out;
 }
 .close:hover {
-  background: url(./img/cross-removebg.png) center/cover no-repeat,
-    var(--violet1);
+  background: url(./img/cross.png) center/cover no-repeat,
+    var(rgba(217, 213, 255, 0.3));
   transition: 0.3s ease-in-out;
 }
 .ul-collection {
   width: 100%;
   height: 100%;
-  background: var(--blue1);
   border-radius: 10px;
+  border: 1px solid silver;
   padding: 10px;
   margin: 0 5px;
   display: flex;
@@ -475,12 +473,12 @@ h1 {
   margin-bottom: 5px;
   border: 2px solid silver;
   border-radius: 5px;
-  background: var(--violet1);
+  background: rgba(217, 213, 255, 0.3);
 }
 .item-collection img {
   height: 50px;
   width: 50px;
-  background: var(--white);
+  background: white;
   border-radius: 50px;
 }
 .item-label {

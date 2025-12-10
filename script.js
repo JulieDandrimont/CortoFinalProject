@@ -1,18 +1,18 @@
 // ==================================
 // Variable Collection
 const containerCollect = document.querySelector(".container-collection")
-const btnCollec = document.querySelector(".collection")
+const btnCollec = document.querySelector(".btn-collection")
 // Variable for liquid
 const liquid = document.querySelector(".liquid");
 const counter = document.querySelector(".counter-boost");
 let boostInterval = null; // its for stop of setInterval after boost
 let isBoostActive = false; // if true active boost 
 // Variable for display frog 
-const containerPet = document.querySelector(".familiar")
-const positionPets = document.querySelector(".pets")
+const containerPet = document.querySelector(".container-pet")
+const positionPets = document.querySelector(".pet")
 const btnFrog = document.querySelector(".frog2")
 const frog = document.querySelector(".frog1")
-let displayFrog = false;
+const statFrog = document.querySelector(".stat-frog")
 // ==================================
 
 const btnClose = document.querySelector(".close")
@@ -293,90 +293,115 @@ function displayshop() {
 }
 
 // ==================================
+//  Area for improvement: aiming to give a boost
 // Function for show animation liquid
 // Function updates the liquid animation and start the boost at 2200
-function updateLiquidAnimation() {
-  liquid.style.transition = "0.3s ease-in-out";
+// function updateLiquidAnimation() {
+//   liquid.style.transition = "0.3s ease-in-out";
 
-  if (intFlowerCountCumul % 100 == 0) {
-    liquid.style.height = "10px";
-    liquid.style.transform = "translate(70%, -210%)";
-  } else if (intFlowerCountCumul % 500 == 0) {
-    liquid.style.height = "15px";
-    liquid.style.transform = "translate(70%, -150%)";
-  } else if (intFlowerCountCumul % 800 == 0) {
-    liquid.style.height = "20px";
-    liquid.style.transform = "translate(70%, -100%)";
-  } else if (intFlowerCountCumul % 1300 == 0) {
-    liquid.style.height = "30px";
-    liquid.style.transform = "translate(70%, -80%)";
-  } else if (intFlowerCountCumul % 1700 == 0 && !isBoostActivve) {
-    liquid.style.height = "50px";
-    liquid.style.transform = "translate(70%, -50%)";
-    //if its diferente to false 
-    activateBoost();
-    // Launch the boost automatically if it's not already active.
-  }
-}
+//   if (intFlowerCountCumul % 100 == 0) {
+//     liquid.style.height = "10px";
+//     liquid.style.transform = "translate(0%, -430%)";
+//   } else if (intFlowerCountCumul % 500 == 0) {
+//     liquid.style.height = "15px";
+//     liquid.style.transform = "translate(0%, -150%)";
+//   } else if (intFlowerCountCumul % 800 == 0) {
+//     liquid.style.height = "20px";
+//     liquid.style.transform = "translate(0%, -100%)";
+//   } else if (intFlowerCountCumul % 1300 == 0) {
+//     liquid.style.height = "30px";
+//     liquid.style.transform = "translate(0%, -80%)";
+//   } else if (intFlowerCountCumul % 1700 == 0 && !isBoostActivve) {
+//     liquid.style.height = "50px";
+//     liquid.style.transform = "translate(0%, -50%)";
+//     //if its diferente to false 
+//     activateBoost();
+//     // Launch the boost automatically if it's not already active.
+//   }
+// }
 
+// // Function to activate the 5-second boost
+// function activateBoost() {
+//   if (boostInterval !== null) {
+//     clearInterval(boostInterval)
+//     boostInterval = null
+//     isBoostActive = false
+//     counter.style.visibility = "visible"
+//   }
+//   isBoostActive = true; // GOOOOOOOO Boost 
+//   let baseFlowerPerClick = flowerPerClick; // switch value of click
+
+//   counter.textContent = 5;
+//   counter.style.visibility = "visible";
+//   flowerPerClick += 6; //Bonus: New flower value during the boost
+//   // In this countdown and stop loop
+//   boostInterval = setInterval(() => {
+//     counter.textContent--;
+//     if (counter.textContent <= 0) {
+//       clearInterval(boostInterval);
+//       counter.textContent = 0
+//       boostInterval = null;
+//       isBoostActive = false;
+//       counter.style.visibility = "hidden";
+//       flowerPerClick = baseFlowerPerClick; // Restaure la valeur normale
+//     }
+//   }, 1000);// this happens every second
+// }
+// if (counter.textContent = 0) clearInterval(boostInterval);
+
+
+// // ==================================
+// // Allows you to check if the frog display is activ
+// function popFrog() {
+//   btnFrog.style.displau = "block"
+//   // if (displayFrog == true) return
+//   if (intFlowerCountCumul >= 3000) { //threshold
+//     containerPet.style.opacity = 1;
+//     btnFrog.style.top = Math.random() * 90 + "%";
+//     btnFrog.style.left = Math.random() * 90 + "%";
+//     btnFrog.style.transition = "1s ease-in-out"
+//     // onclick you own + 5 flowers and frog display in the game
+//     btnFrog.addEventListener("click", () => {
+//       btnFrog.remove()
+//       displayFrog = true
+//       btnFrog.style.display = "none"
+//       statFrog.style.visibility = "visible"
+//       frog.style.visibility = "visible"
+//       positionPets.style.position = "relative"
+//       flowerPerClick += 5
+//     });
+//   }
+// }
 // ==================================
-// Function to activate the 5-second boost
-function activateBoost() {
-  if (boostInterval !== null) {
-    clearInterval(boostInterval)
-    boostInterval = null
-    isBoostActive = false
-    counter.style.visibility = "visible"
-  }
-  isBoostActive = true; // GOOOOOOOO Boost 
-  let baseFlowerPerClick = flowerPerClick; // switch value of click
-
-  counter.textContent = 5;
-  counter.style.visibility = "visible";
-  flowerPerClick += 6; //Bonus: New flower value during the boost
-  // In this countdown and stop loop
-  boostInterval = setInterval(() => {
-    counter.textContent--;
-    if (counter.textContent <= 0) {
-      clearInterval(boostInterval);
-      counter.textContent = 0
-      boostInterval = null;
-      isBoostActive = false;
-      counter.style.visibility = "hidden";
-      flowerPerClick = baseFlowerPerClick; // Restaure la valeur normale
-    }
-  }, 1000);// this happens every second
-}
-if (counter.textContent = 0) clearInterval(boostInterval);
-
-
 // ==================================
+let frogListenerAdded = false;
+let displayFrog = false;
 // Allows you to check if the frog display is active
-const popFrog = () => {
-  btnFrog.style.top = Math.random() * 90 + "%";
-  btnFrog.style.left = Math.random() * 90 + "%";
-  btnFrog.style.transition = "0.3s ease-in-out"
-  // onclick you own + 5 flowers and frog display in the game
-  btnFrog.addEventListener("click", () => {
-    btnFrog.remove()
-    displayFrog = true
-    btnFrog.style.display = "none"
-    frog.style.visibility = "visible"
-    positionPets.style.position = "relative"
-    flowerPerClick += 5
-  });
-}
+function popFrog() {
+  // Seulement si le seuil est atteint et que le display n'est pas déjà actif
+  if (displayFrog == true) return;
 
-function loopFrog() {
-  // As long as it's true, the frog is available with a click
-  if (displayFrog == true) return
   if (intFlowerCountCumul >= 3000) { //threshold
     containerPet.style.opacity = 1;
-    setInterval(popFrog, 1000);// Play animation
+    btnFrog.style.display = "block"; // Corrigé: "displau" -> "display"
+    btnFrog.style.top = Math.random() * 90 + "%";
+    btnFrog.style.left = Math.random() * 90 + "%";
+    btnFrog.style.transition = "1s ease-in-out";
+
+    // Ajoute l'event listener une seule fois
+    if (!frogListenerAdded) {
+      frogListenerAdded = true;
+      btnFrog.addEventListener("click", () => {
+        displayFrog = true;
+        btnFrog.style.display = "none";
+        statFrog.style.visibility = "visible";
+        frog.style.visibility = "visible";
+        positionPets.style.position = "relative";
+        flowerPerClick += 5;
+      });
+    }
   }
 }
-
-
 // ==================================
 // SetInterval 
 setInterval(() => {
@@ -384,7 +409,7 @@ setInterval(() => {
   intFlowerCountCumul += totalAutoEffect;
   flowerCount.textContent = spendableFlowers.toFixed(2);
   flowerCountCumul.textContent = intFlowerCountCumul.toFixed(2);
+  // updateLiquidAnimation();
   displayshop();
-  updateLiquidAnimation();
-  loopFrog();
+  popFrog()
 }, 1000);
