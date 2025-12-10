@@ -1,15 +1,22 @@
-/// ================================== Click ollection =================================== ///
+// ==================================
+// Variable Collection
 const containerCollect = document.querySelector(".container-collection")
+const btnCollec = document.querySelector(".collection")
+// Variable for liquid
+const liquid = document.querySelector(".liquid");
+const counter = document.querySelector(".counter-boost");
+let boostInterval = null; // its for stop of setInterval after boost
+let isBoostActive = false; // if true active boost 
+// Variable for display frog 
+const containerPet = document.querySelector(".familiar")
+const positionPets = document.querySelector(".pets")
+const btnFrog = document.querySelector(".frog2")
+const frog = document.querySelector(".frog1")
+let displayFrog = false;
+// ==================================
+
 const btnClose = document.querySelector(".close")
 const btnFlower = document.querySelector(".flower");
-const btnCollec = document.querySelector(".collection")
-btnCollec.addEventListener("click", () => {
-  containerCollect.style.display = "flex"
-})
-btnClose.addEventListener("click", () => {
-  containerCollect.style.display = "none"
-})
-
 /// ================================== Variable =================================== ///
 // DOM Elements
 let shopItems = document.querySelector(".container-item-shop"); // récupère le conteneur des items de la boutique pour y ajouter les objets dynamiquement
@@ -28,7 +35,15 @@ let totalAutoEffect = 0; // effet total des items automatiques
 flowerCount.textContent = Math.round(spendableFlowers.toFixed(0));
 flowerCountCumul.textContent = Math.round(intFlowerCountCumul.toFixed(0));
 
-/// ================================== EVENT FLOWER CLICK =================================== ///
+// ==================================
+// Event on click collection
+btnCollec.addEventListener("click", () => {
+  containerCollect.style.display = "flex"
+})
+btnClose.addEventListener("click", () => {
+  containerCollect.style.display = "none"
+})
+// ==================================
 
 btnFlower.addEventListener("mousedown", () => {
   // crée une animation au clic sur la fleur
@@ -42,6 +57,7 @@ btnFlower.addEventListener("mousedown", () => {
 btnFlower.addEventListener("mouseup", () => {
   btnFlower.style.transform = "scale(1)";
 });
+
 
 /// ================================== CLASS ITEM SHOP =================================== ///
 class items {
@@ -70,9 +86,9 @@ class items {
     this.containerLi = null;
     items.listItems.push(this);
   }
-
-  /// ================================== CLASS Create Item Collection =================================== ///
-  createItemCollection() {//HTML of the collection's components
+  // ==================================
+  // HTML of the collection's components
+  createItemCollection() {
     if (this.current == false) {
       this.containerLi = document.createElement("li")
       this.containerLi.className = "item-collection";
@@ -85,9 +101,9 @@ class items {
     }
     collectItems.appendChild(this.containerLi)
   }
-
-  /// ================================== CLASS Create Item Current =================================== ///
-  createItemCurrent() {//HTML of the current's components
+  // ==================================
+  //HTML of the current's components
+  createItemCurrent() {
     if (!this.containerLi) { // if différent to item-shop
       this.containerLi = document.createElement("li");
       this.containerLi.className = "item-current";
@@ -106,9 +122,10 @@ class items {
     }
   }
 
-  /// ================================== CLASS Create Item Shop =================================== ///
-  createItem() { // HTML of the shop's components
-    const li = document.createElement("li"); // the stockoke in a list of shop items
+  // ==================================
+  // HTML of the shop's components
+  createItem() {
+    const li = document.createElement("li"); // the stock in a list of shop items
     li.className = "item-shop";
     this.li = li;
     this.li.innerHTML = `
@@ -169,12 +186,14 @@ class items {
       this.li.style.opacity = 0.5
       return;
     }
+    // ==================================
     // redirection of current items or not
     if (this.current == true) {
       this.createItemCurrent();
     } else {
       this.createItemCollection()
     }
+    // ==================================
   }
 }
 /// ================================== CREATING ITEMS =================================== ///
@@ -243,7 +262,8 @@ medicine.createItem();
 const goldenEgg = new items("Golden Egg", false, 95000, 5, 150, "click", 100000, "./img/egg.png", 0);
 goldenEgg.createItem();
 
-/// ================================== Function display Shop =================================== ///
+// ==================================
+// Function for display element in the shop
 function displayshop() {
   // It checks the threshold and displays the result based on the available funds or the number of flowers collected.
   items.listItems.forEach((item) => {
@@ -266,59 +286,54 @@ function displayshop() {
   });
 }
 
-
-
-/// ================================== SetInterval =================================== ///
-// Varaible declaration
-const liquid = document.querySelector(".liquid");
-const counter = document.querySelector(".counter-boost");
-let boostInterval = null; // its for stop of setInterval after boost
-let isBoostActive = false; // if true active boost 
-
+// ==================================
+// Function for show animation liquid
 // Function updates the liquid animation and start the boost at 2200
 function updateLiquidAnimation() {
   liquid.style.transition = "0.3s ease-in-out";
 
-  if (intFlowerCountCumul <= 100) {
+  if (intFlowerCountCumul % 100 == 0) {
+    liquid.style.height = "10px";
+    liquid.style.transform = "translate(58%, -200%)";
+  } else if (intFlowerCountCumul % 500 == 0) {
+    liquid.style.height = "15px";
+    liquid.style.transform = "translate(58%, -150%)";
+  } else if (intFlowerCountCumul % 800 == 0) {
     liquid.style.height = "20px";
-    liquid.style.transform = "translate(56%, -180%)";
-  } else if (intFlowerCountCumul <= 500) {
+    liquid.style.transform = "translate(58%, -100%)";
+  } else if (intFlowerCountCumul % 1300 == 0) {
     liquid.style.height = "30px";
-    liquid.style.transform = "translate(56%, -100%)";
-  } else if (intFlowerCountCumul <= 900) {
-    liquid.style.height = "40px";
-    liquid.style.transform = "translate(56%, -80%)";
-  } else if (intFlowerCountCumul <= 1300) {
+    liquid.style.transform = "translate(58%, -80%)";
+  } else if (intFlowerCountCumul % 1700 == 0 && !isBoostActivve) {
     liquid.style.height = "50px";
-    liquid.style.transform = "translate(56%, -60%)";
-  } else if (intFlowerCountCumul <= 1800) {
-    liquid.style.height = "60px";
-    liquid.style.transform = "translate(56%, -50%)";
-  } else if (intFlowerCountCumul >= 2200) {
-    liquid.style.height = "70px";
-    liquid.style.transform = "translate(56%, -40%)";
-
+    liquid.style.transform = "translate(58%, -50%)";
+    //if its diferente to false 
+    activateBoost();
     // Launch the boost automatically if it's not already active.
-    if (!isBoostActive) { //if its diferente to false 
-      activateBoost();
-    }
   }
 }
 
+// ==================================
 // Function to activate the 5-second boost
 function activateBoost() {
+  if (boostInterval !== null) {
+    clearInterval(boostInterval)
+    boostInterval = null
+    isBoostActive = false
+    counter.style.visibility = "visible"
+  }
   isBoostActive = true; // GOOOOOOOO Boost 
   let baseFlowerPerClick = flowerPerClick; // switch value of click
 
   counter.textContent = 5;
   counter.style.visibility = "visible";
   flowerPerClick += 6; //Bonus: New flower value during the boost
-
   // In this countdown and stop loop
   boostInterval = setInterval(() => {
     counter.textContent--;
     if (counter.textContent <= 0) {
       clearInterval(boostInterval);
+      counter.textContent = 0
       boostInterval = null;
       isBoostActive = false;
       counter.style.visibility = "hidden";
@@ -326,11 +341,38 @@ function activateBoost() {
     }
   }, 1000);// this happens every second
 }
+if (counter.textContent = 0) clearInterval(boostInterval);
 
 
+// ==================================
+// Allows you to check if the frog display is active
+const popFrog = () => {
+  btnFrog.style.top = Math.random() * 90 + "%";
+  btnFrog.style.left = Math.random() * 90 + "%";
+  btnFrog.style.transition = "0.3s ease-in-out"
+  // onclick you own +5 flowers and frog display in the game
+  btnFrog.addEventListener("click", () => {
+    btnFrog.remove()
+    displayFrog = true
+    btnFrog.style.display = "none"
+    frog.style.visibility = "visible"
+    positionPets.style.position = "relative"
+    flowerPerClick += 5
+  });
+}
+
+function loopFrog() {
+  // As long as it's true, the frog is available with a click
+  if (displayFrog == true) return
+  if (intFlowerCountCumul >= 3000) { //threshold
+    containerPet.style.opacity = 1;
+    setInterval(popFrog, 1000);// Play animation
+  }
+}
 
 
-/// ================================== SetInterval =================================== ///
+// ==================================
+// SetInterval 
 setInterval(() => {
   spendableFlowers += totalAutoEffect;
   intFlowerCountCumul += totalAutoEffect;
