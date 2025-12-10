@@ -1,39 +1,198 @@
+@import url("https://p.typekit.net/p.css?s=1&k=gxm3lqh&ht=tk&f=10879.10884.15586.15848.32224.32227.32228.32231&a=112030413&app=typekit&e=css");
+:root {
+  --violet1: rgba(217, 213, 255, 0.3);
+  --violet2: rgb(162, 63, 190);
+  --violet3: rgba(89, 71, 245, 0.3);
+  --sable1: rgba(227, 209, 183);
+  --sable2: rgb(235, 163, 63);
+  --silver: rgb(192, 192, 192);
+  --white: rgb(255, 255, 255);
+  --blue1: rgb(198, 224, 248);
+  --blue2: rgb(106, 101, 153);
+  --blue3: rgb(56, 34, 252);
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-size: 14px;
+  font-family: "futura-pt";
+  font-weight: 400;
 }
+
 body {
   position: relative;
-  width: 1440px;
+  /* max-width: 1440px; */
   height: 100vh;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  background: url(./img/bg.png) center/cover no-repeat;
+}
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  transform: translate(-50%, -50%);
+  /* transition: 0.2s ease-out; */
+  z-index: 1;
+  background: url(./img/cursor_flower.png) center/cover no-repeat;
 }
 /* ====================== Aside bar left ====================== */
-.container-current-attributs {
-  height: 60%;
-  width: 110px;
+.container-current-shop {
+  display: flex;
+  justify-content: flex-start;
+  width: 45%;
+}
+/* ====================== shop ======================*/
+.shop-container {
+  height: 100%;
+  width: 300px;
+  padding: 10px;
+  background: var(--sable1);
+  overflow: auto;
+}
+h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+.container-item-shop {
+  list-style: none;
+  height: 90%;
+  padding: 10px;
+  background: var(--sable1);
+  border: 2px solid var(--silver);
+  border-radius: 10px;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+.item-shop {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 2px solid silver;
+  border-radius: 5px;
+  background: var(--violet1);
+}
+.img-shop {
+  height: 50px;
+  width: 50px;
+  background: var(--white);
+  border-radius: 50px;
+}
+.item-label {
+  background: white;
+  width: 100%;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.hover-item {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--sable1);
+  visibility: hidden;
+}
+.item-shop:hover .hover-item {
+  visibility: visible;
+}
+.buy-btn {
+  font-size: 1.2rem;
+  color: var(--white);
+  padding: 10px;
+  background: var(--violet2);
+  border: 1px solid var(--silver);
+  border-radius: 4px;
+  transition: 0.3s ease-in-out;
+}
+.buy-btn:hover {
+  background: var(--violet3);
+  transition: 0.3s ease-in-out;
+}
+.hover-stat-shop {
+  display: none;
+}
+.item-shop:hover {
+  .hover-stat-shop {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    background: var(--violet3);
+    border-radius: 5px;
+    padding: 15px;
+  }
+}
+/* ====================== Visibility ================================ */
 
-  float: left;
+/* Display none */
+
+/* visible mais pas cliquable */
+.item-shop-visibility {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 2px solid silver;
+  border-radius: 5px;
+  background: var(--violet1);
+  opacity: 0.5;
+}
+
+/* pas visible pas cliquable */
+
+.item-shop-hidden {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 2px solid silver;
+  border-radius: 5px;
+  background: rgba(0, 0, 0);
+  opacity: 0.6;
+
+  .img-shop {
+    filter: blur(8px);
+  }
+  .item-label {
+    display: none;
+  }
+}
+
+/* ====================== current ================================ */
+.container-current-attributs {
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.item-current {
+  position: relative;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-.container-current {
-  position: relative;
-  width: 110px;
-  padding: 10px;
-  border: 1px solid black;
+.item-current img {
+  height: 40px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 10px var(--sable2);
+  background: var(--sable2);
 }
-.container-current img {
-  height: 70px;
-  width: 70px;
-  border-radius: 50px;
-  background: red;
-}
-.container-current span {
+.item-current span {
   position: absolute;
   top: 0;
   left: 0;
@@ -45,134 +204,187 @@ body {
   display: grid;
   place-items: center;
 }
-.container-current p:nth-child(3) {
-  font-size: 1.4rem;
+.item-current p:nth-child(3) {
+  font-size: 1.2rem;
   text-align: center;
   text-transform: bold;
 }
-.container-current p ~ p {
+.item-current p ~ p {
+  font-size: 0.8rem;
   text-align: center;
   text-transform: bold;
+}
+.current-level {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 20px;
+  background: var(--violet3);
+  box-shadow: 0 0 2px 3px var(--violet3);
+  transform: translate(-100%, 60%);
+}
+.current-effect {
+  font-size: 0.8rem;
+}
+/* ======================  ======================*/
+.container-cauldoron-flower-collection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 /* ====================== Cauldron ====================== */
 .cauldron-container {
-  height: 250px;
-  width: 180px;
-  margin: 0 30% 0 auto;
-}
-.cauldron-container p {
-  font-size: 1.4rem;
-  text-align: center;
-  text-transform: bold;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: end;
 }
 .liquid-container {
-  border: 1px solid black;
-  height: 100%;
-  width: 60%;
-  border-radius: 60px;
-  margin: 0 auto;
+  position: relative;
+  width: 110px;
+  height: 110px;
   align-content: end;
+  overflow: hidden;
+  background: url(./img/cauldron.png) center/cover no-repeat;
 }
-.liquid {
-  height: 50%;
-  width: 100%;
-  border-radius: 0px 0px 60px 60px;
-  background: red;
-}
-/* ====================== Flower ======================*/
-.flower-container {
+.counter-boost {
   position: absolute;
+  content: "";
   top: 0;
   left: 0;
-  height: 400px;
-  width: 400px;
-  border: 1px solid red;
-  margin: 50px 40% 0 auto;
+  transform: translate(60%, 50%);
+  background: var(--violet3);
+  height: 70px;
+  width: 70px;
+  color: rgb(255, 255, 255);
+  font-size: 4.8rem;
+  margin: 0 auto;
+  text-align: center;
+  visibility: hidden;
+}
+.liquid {
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  height: 70px;
+  width: 70px;
+  background: rgb(47, 252, 184);
+  transform: translate(56%, 65%);
+}
+.liquid-container p {
+  font-size: 1.4rem;
+  margin: 0 auto;
+  text-align: center;
+}
+/* ====================== Flower ======================*/
+.container-flower-collection {
+  width: 100%;
+  display: flex;
+}
+.flower-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translate(110%, 90%);
 }
 .flower {
-  height: 250px;
-  width: 250px;
-  margin: 0 auto;
-  border: 1px solid red;
+  max-height: 500px;
+  width: 400px;
   border-radius: 200px;
+  background: url(./img/flower3.png) center/cover no-repeat;
+  background-size: 85%;
+  box-shadow: 0 0 50px 30px var(--sable1);
+  background-color: var(--sable2);
 }
-
-.flower-container p {
+.flower-count {
+  padding: 20px;
+}
+.flower-count p:nth-child(1) {
+  font-size: 1.8rem;
+  padding: 15px;
+}
+.flower-count p {
   font-size: 1.4rem;
   text-align: center;
 }
-.flower-container p:nth-child(2) {
-  padding: 20px;
-  font-size: 1.8rem;
-  text-transform: bold;
+.collection-container {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+.collection {
+  border: 2px solid var(--silver);
+  height: 80px;
+  width: 80px;
+  border-radius: 100px;
+  background-color: var(--sable2);
+  color: var(--violet2);
+}
+.collection:hover {
+  background: var(--violet3);
+  transition: 0.3s ease-in-out;
 }
 /* ====================== Familiar ======================*/
 .familiar {
-  float: right;
   height: 100%;
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  transition: 0.4s ease-in-out;
+  opacity: 0;
 }
-.container-pets {
-  position: relative;
-  width: 340px;
+.container-pet {
+  width: 185px;
   overflow: hidden;
 }
 .pets {
-  top: 0;
-  left: 0;
-  background: rgb(180, 180, 180);
-  width: 210px;
-  height: 210px;
+  background: var(--sable2);
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
-  transform: rotate(45deg);
-  border-radius: 0px 500px 500px 500px;
+  border-radius: 500px;
 }
-.pets2 {
+
+.frog1 {
   position: absolute;
   top: 0;
   left: 0;
-  background: white;
-  border-radius: 50px 0px 200px 00px;
-  transform: translateX(80%) translateY(-16%) rotate(45deg);
-  height: 130px;
-  width: 130px;
+  background: rgb(255, 255, 255);
+  height: 70px;
+  width: 70px;
+  border-radius: 100px;
+  transform: translate(60%, 55%);
+  visibility: hidden;
+  /* animation: anim 10s forwards; */
 }
-.frog,
-.cat,
-.dragon {
+.frog2 {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
-  background: rgb(86, 86, 86);
-  transform: translateX(160%) translateY(70%);
-  height: 80px;
+  background: transparent;
+  height: 70px;
+  width: 70px;
   border-radius: 100px;
 }
-.container-items-frog,
-.container-items-cat,
-.container-items-dragon {
+
+.container-items-frog {
   position: absolute;
   top: 0;
   left: 0;
-  height: 300px;
-  width: 300px;
+  height: 100px;
+  width: 100px;
   transform: translateX(8%);
   border-radius: 200px;
   display: flex;
   justify-content: space-around;
   list-style: none;
 }
-.items-frog,
-.items-cat,
-.items-dragon {
+.items-frog {
   position: absolute;
   top: 0;
   left: 0;
@@ -185,9 +397,7 @@ body {
   border-radius: 100px;
   transition: 0.8s ease-in-out;
 }
-.hover-items-frog,
-.hover-items-cat,
-.hover-items-dragon {
+.hover-items-frog {
   position: absolute;
   height: 60px;
   width: 130px;
@@ -199,67 +409,109 @@ body {
   visibility: hidden;
   transition: 0.3s ease-in-out;
 }
-.hover-items-frog:hover,
-.hover-items-cat:hover,
-.hover-items-dragon:hover {
+.hover-items-frog:hover {
   z-index: 1;
   transform: scale(1.1);
   transition: 0.8s ease-in-out;
 }
-.hover-items-frog,
-.hover-items-cat,
-.hover-items-dragon {
+.hover-items-frog {
   z-index: 3;
   opacity: 1;
   visibility: visible;
   transition: 0.3s ease-in-out;
 }
-
-.items-frog:nth-child(1),
-.items-cat:nth-child(1),
-.items-dragon:nth-child(1) {
+.items-frog:nth-child(1) {
   transform: translate(0%, 140%);
   transition: 0.8s ease-in-out;
 }
-.items-frog:nth-child(2),
-.items-cat:nth-child(2),
-.items-dragon:nth-child(2) {
+.items-frog:nth-child(2) {
   transform: translate(40%, 235%);
   transition: 0.8s ease-in-out;
 }
-.items-frog:nth-child(3),
-.items-cat:nth-child(3),
-.items-dragon:nth-child(3) {
+.items-frog:nth-child(3) {
   transform: translate(137%, 275%);
   transition: 0.8s ease-in-out;
 }
-.items-frog:nth-child(4),
-.items-cat:nth-child(4),
-.items-dragon:nth-child(4) {
+.items-frog:nth-child(4) {
   transform: translate(235%, 235%);
   transition: 0.8s ease-in-out;
 }
-.items-frog:nth-child(5),
-.items-cat:nth-child(5),
-.items-dragon:nth-child(5) {
+.items-frog:nth-child(5) {
   transform: translate(275%, 140%);
   transition: 0.8s ease-in-out;
 }
-
-/* ====================== Familiar ======================*/
-.container-body-bottom {
+/* ====================== Collection ======================*/
+.container-collection {
   position: absolute;
-  left: 0;
   bottom: 0;
+  right: 0;
+  padding: 0px 20px 20px 20px;
+  max-height: 500px;
+  max-width: 400px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--blue2);
+  transition: 0.8s ease-in-out;
+  z-index: 5;
+}
+.contairner-title-arrow {
   display: flex;
   justify-content: space-between;
-  width: 30%;
-  height: 40%;
-  border: 1px solid black;
+  align-items: center;
 }
-/* ====================== Familiar ======================*/
-.shop-container {
-  border: 1px solid black;
+.close {
+  border: 1px solid var(--silver);
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+  background: url(./img/cross-removebg.png) center/cover no-repeat, var(--white);
+  transform: rotate(180deg);
+  align-self: flex-end;
+  z-index: 1;
+  transition: 0.3s ease-in-out;
+}
+.close:hover {
+  background: url(./img/cross-removebg.png) center/cover no-repeat,
+    var(--violet1);
+  transition: 0.3s ease-in-out;
+}
+.ul-collection {
+  width: 100%;
   height: 100%;
-  width: 70%;
+  background: var(--blue1);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+.item-collection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 2px solid silver;
+  border-radius: 5px;
+  background: var(--violet1);
+}
+.item-collection img {
+  height: 50px;
+  width: 50px;
+  background: var(--white);
+  border-radius: 50px;
+}
+.item-label {
+  background: white;
+  width: 100%;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 5px;
 }
