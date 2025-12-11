@@ -1,37 +1,36 @@
-// ==================================
-// Variable Collection
+///==== DOM ELEMENTS AND GAME VAR
+
+    // Variable Collection
 const containerCollect = document.querySelector(".container-collection")
 const btnCollec = document.querySelector(".btn-collection")
-// Variable for liquid
+const btnClose = document.querySelector(".close")
+    // Variable for liquid
 const liquid = document.querySelector(".liquid");
 const counter = document.querySelector(".counter-boost");
 let boostInterval = null; // its for stop of setInterval after boost
 let isBoostActive = false; // if true active boost 
-// Variable for display frog 
+    // Variable for display frog 
 const containerPet = document.querySelector(".container-pet")
 const positionPets = document.querySelector(".pet")
 const btnFrog = document.querySelector(".frog2")
 const frog = document.querySelector(".frog1")
 const statFrog = document.querySelector(".stat-frog")
-// ==================================
 
-const btnClose = document.querySelector(".close")
 const btnFlower = document.querySelector(".flower");
-/// ================================== Variable =================================== ///
-// DOM Elements
+
+    // items purchasing
 let shopItems = document.querySelector(".container-item-shop"); // get shop container to add dynamically JS
 let currentItems = document.querySelector(".container-current-attributs");
 let collectItems = document.querySelector(".ul-collection")
 
+   //flowers
 let flowerCount = document.querySelector(".flower-count > h2 span");
 let flowerCountCumul = document.querySelector(".flower-count p > span");
-console.log(flowerCountCumul);
-
 
 let spendableFlowers = parseFloat(flowerCount.textContent) || 0; 
 let intFlowerCountCumul = parseFloat(flowerCountCumul.textContent) || 0;
 
-// Variables
+// Game var
 let flowerPerClick = 1; // nombre de fleurs par clic de base
 let totalAutoEffect = 0; // effet total des items automatiques
 flowerCount.textContent = Math.round(spendableFlowers.toFixed(0));
@@ -40,9 +39,10 @@ flowerCountCumul.textContent = Math.round(intFlowerCountCumul.toFixed(0));
 let displayFrog = false;
 let frogListenerAdded = false;
 
-//localStorage.clear(); // for the debug
+localStorage.clear(); // for the debug
 
-/// ==== GAME DATA
+/// ==== GAME DATA -- objects infos and effects
+
 const itemsData = [
   ["Basket", true,15, 1.3, 0.2, "auto", 0, "./img/basket.png", 0],
   ["Sickle", true,50, 1.5, 0.4, "auto", 0, "./img/sickle.png", 0],
@@ -63,24 +63,23 @@ const itemsData = [
   ["Medicine",false, 95000, 4.8, 100, "click", 100000, "./img/medicine.png", 0],
   ["Golden Egg",false, 95000, 5, 150, "click", 100000, "./img/egg.png", 0]];
 
-// ==================================
-// Event on click collection
+
+/// ==== object collection interaction 
 btnCollec.addEventListener("click", () => {
   containerCollect.style.display = "flex"
 })
 btnClose.addEventListener("click", () => {
   containerCollect.style.display = "none"
 })
-// ==================================
 
-btnFlower.addEventListener("mousedown", () => {
-  // crée une animation au clic sur la fleur
+/// ==== CLICK ON THE FLOWER
+btnFlower.addEventListener("mousedown", () => { // animation on the flower (size)
   btnFlower.style.transform = "scale(1.1)";
   spendableFlowers += flowerPerClick; // modifie le nombre de fleurs dépensables (var)
   intFlowerCountCumul += flowerPerClick;
 
-  flowerCount.textContent = Math.round(spendableFlowers); // impplémente l'affichage du nombre de fleurs dépensables INNER HTML
-  flowerCountCumul.textContent = Math.round(intFlowerCountCumul);
+  flowerCount.textContent = Math.round(spendableFlowers); 
+  flowerCountCumul.textContent = Math.round(intFlowerCountCumul);// to avoid weird numbers
 });
 btnFlower.addEventListener("mouseup", () => {
   btnFlower.style.transform = "scale(1)";
@@ -89,7 +88,7 @@ btnFlower.addEventListener("mouseup", () => {
 
 /// ================================== CLASS ITEM SHOP =================================== ///
 class items {
-  static listItems = []
+  static listItems = [] // usefull for the localStorage save
   constructor(name,current,price,increasePrice,effect,type,threshold,img,level = 0
   ) {
     this.name = name;
@@ -105,8 +104,8 @@ class items {
     this.containerLi = null;
     items.listItems.push(this);
   }
-  // ==================================
-  // HTML of the collection's components
+  
+    // we create the shop items through JS, by default, we display them in the shop // Display mask to be implemented
   createItemCollection() {
     if (this.current == false) {
       this.containerLi = document.createElement("li")
@@ -120,10 +119,10 @@ class items {
     }
     collectItems.appendChild(this.containerLi)
   }
-  // ==================================
+
   //HTML of the current's components
   createItemCurrent() {
-    if (!this.containerLi) { // if différent to item-shop
+    if (!this.containerLi) { // if different to item-shop
       this.containerLi = document.createElement("li");
       this.containerLi.className = "item-current";
       this.containerLi.innerHTML = `
@@ -135,16 +134,15 @@ class items {
       currentItems.appendChild(this.containerLi)
     }
     else {
-      //Permet de passer les valeurs pour le localStorage
+      //helps with local storage
       this.containerLi.querySelector(".current-level").textContent = this.level;
       this.containerLi.querySelector(".current-effect").textContent = (this.effect * this.level).toFixed(2);
     }
   }
 
-  // ==================================
   // HTML of the shop's components
   createItem() {
-    const li = document.createElement("li"); // the stock in a list of shop items
+    const li = document.createElement("li"); // stocks it in a list of shop items
     li.className = "item-shop";
     this.li = li;
     this.li.innerHTML = `
@@ -166,61 +164,55 @@ class items {
   }
   /// ================================== Clas Function Buy =================================== ///
   buy() {
-    //pas besoin de paramètre car on utilise les propriétés de l'instance
-    if (spendableFlowers >= this.price) {
-      // Vérifie si le joueur a assez de fleurs
-      spendableFlowers -= this.price; //enlève le prix des fleurs
-      flowerCount.textContent = Math.round(spendableFlowers); // Met à jour l'affichage des fleurs collectées
+ 
+    if (spendableFlowers >= this.price) {   // to purchase an item we have to have enough flowers
+      spendableFlowers -= this.price;  // we loose money ;( 
+      flowerCount.textContent = Math.round(spendableFlowers); 
       this.level++;
       if (this.type === "click") {
-        flowerPerClick += this.effect; // Augmente les fleurs par clic
+        flowerPerClick += this.effect;
         // totalClickEffect += this.effect;
       } else if (this.type === "auto") {
         totalAutoEffect += this.effect;
       }
-      this.price *= this.increasePrice; // Augmente le prix pour le prochain achat, à arrondir selon les besoins
+      this.price *= this.increasePrice; //increases next purchase's price 
       this.price = parseFloat(this.price.toFixed(2));
-      // ici ajouter le cumul des effets de l'item à afficher dans le hover : ne pas oublier de L'in
-
-      // FAIRE LA FONCTION D'AFFICHAGE
-      //this.effect += parseFloat(this.effect); // APPARREMENT c'EST une erreur de logique ici, ça double l'effet à chaque achat, il faudrait peut-être juste laisser this.effect tel quel
       this.li.style.display = "flex"
       this.li.style.opacity = 1
+
       shopItems.appendChild(this.li)
 
       const priceSpan = this.li.querySelector(".item-price");
-      priceSpan.innerHTML = this.price; // Met à jour le prix affiché
-      // const ownedSpan = this.li.querySelector(".item-owned");
-      // ownedSpan.innerHTML = this.level; // Met à jour la quantité possédée
-      const effectSpan = this.li.querySelector(".item-effect");
+      priceSpan.innerHTML = this.price; //update price
+  ;
+      const effectSpan = this.li.querySelector(".item-effect"); // price stays the same
       effectSpan.innerHTML = (this.effect).toFixed(2); 
 
+      // log for the debug ==> later display them on the screen 
       console.log(
-        `Achat effectué : ${this.name}, nouvelle quantité possédée : ${this.level}`
+        `You've successfully purchase: ${this.name}, his new level : ${this.level}`
       );
     } else {
-      console.log(`Achat refusé : fonds insuffisants pour ${this.name}`);
+      console.log(`You don't have enough moula ${this.name}`);
       this.li.style.display = "none"
       this.li.style.opacity = 0.5
       return;
     }
-    // ==================================
-    // redirection of current items or not
-    if (this.current == true) {
+    if (this.current == true) { // display current and "normal" items in diff cont
       this.createItemCurrent();
     } else {
       this.createItemCollection()
     }
-    // ==================================
+    
   }
 }
 
-// ==================================
-// Function for display element in the shop
+
+// threshold for the display in the shop is flowerCumul
 function displayshop() {
-  // It checks the threshold and displays the result based on the available funds or the number of flowers collected.
+
   items.listItems.forEach((item) => {
-    // normal item disapear 
+    // normal item disapears
     if (item.current === false && item.level >= 1) {
       item.li.style.display = "none";
       return;
@@ -245,23 +237,22 @@ function displayshop() {
   });
 }
 
-/// ===== load game function
+/// ===== LOAD GAME FUNCTION
 function loadGame() {
 
-  items.listItems = [] 
+  items.listItems = [] // to avoid doublons
   
-  shopItems.innerHTML = "" // évite les doublons
+  shopItems.innerHTML = "" //clears the html - to be sure 
 
   const saved = JSON.parse(localStorage.getItem("itemsList")||"[]");
 
     if (saved.length === 0) { // tu commences un nouveau jeu
-        console.log("Aucune sauvegarde trouvée — création des items par défaut.");
+        console.log("No previous save — innitializing the default items.");
 
         itemsData.forEach(stat => {
-          new items(...stat).createItem();}); // charge les stats 
-
-        // conditions de base
-
+          new items(...stat).createItem();}); // load game data from the data array + display them in the shop  
+        
+          // sets the game variables
         flowerCount.textContent = 0;
         flowerCountCumul.textContent = 0;
         spendableFlowers = parseFloat(localStorage.getItem("flowerCount"))||spendableFlowers;
@@ -269,18 +260,17 @@ function loadGame() {
         flowerPerClick = parseFloat(localStorage.getItem("clickerValue"))||1;
         totalAutoEffect = parseFloat(localStorage.getItem("effect"))||0;
         
-        console.log("Sauvegarde trouvée — chargement...");
+        console.log("A Save has been found — loading ...");
 
     } else { 
 
-      // Sinon, si le localStorage contient des data, on les charge
+      // if localStorage has data , we load them
 
-    // Recrée les instances
+    // reacreating objects
 
     saved.forEach(obj => {
       
-      const createClass = new items(
-            obj.name,
+      const createClass = new items(obj.name,
             obj.current,
             parseFloat(obj.price),
             parseFloat(obj.increasePrice),
@@ -290,15 +280,15 @@ function loadGame() {
             obj.img,
             parseInt(obj.level));
 
-            createClass.createItem()
+            createClass.createItem() // dispplays the item
         });
 
       
-    // affiche le HTML 
 
 
 
-    // Charge les autres valeurs A DEBUG
+
+    // loads variables
     spendableFlowers = parseFloat(localStorage.getItem("flowerCount")) || 0;
     intFlowerCountCumul = parseFloat(localStorage.getItem("flowerCountCumul")) || 0;
     totalAutoEffect = parseFloat(localStorage.getItem("effects")) || 0;
@@ -308,10 +298,10 @@ function loadGame() {
 
     flowerCount.textContent = parseFloat(spendableFlowers.toFixed(2));
     flowerCountCumul.textContent = parseFloat(intFlowerCountCumul.toFixed(2));
-    console.log("jeu chargé")
+    console.log("Game loaded")
 }}
 
-// ==================================
+// =====  CAULDRON AND BOOST ;'(
 //  Area for improvement: aiming to give a boost
 // Function for show animation liquid
 // Function updates the liquid animation and start the boost at 2200
@@ -369,7 +359,7 @@ function loadGame() {
 // if (counter.textContent = 0) clearInterval(boostInterval);
 
 
-// // ==================================
+
 // // Allows you to check if the frog display is activ
 // function popFrog() {
 //   btnFrog.style.displau = "block"
@@ -391,21 +381,21 @@ function loadGame() {
 //     });
 //   }
 // }
-// ==================================
-// ==================================
+
+
 // Allows you to check if the frog display is active
 function popFrog() {
-  // Seulement si le seuil est atteint et que le display n'est pas déjà actif
+  // only if threshold is not reached and display is not alredy active
   if (displayFrog == true) return;
 
   if (intFlowerCountCumul >= 3000) { //threshold
     containerPet.style.opacity = 1;
-    btnFrog.style.display = "block"; // Corrigé: "displau" -> "display"
+    btnFrog.style.display = "block"; 
     btnFrog.style.top = Math.random() * 90 + "%";
     btnFrog.style.left = Math.random() * 90 + "%";
     btnFrog.style.transition = "1s ease-in-out";
 
-    // Ajoute l'event listener une seule fois
+    // Adds event listener only once
     if (!frogListenerAdded) {
       frogListenerAdded = true;
       btnFrog.addEventListener("click", () => {
@@ -420,9 +410,9 @@ function popFrog() {
   }
 }
 
-/// ================================== SAVE GAME =================================== ///
+/// ==== SAVE GAME ===
 
-function saveGame(){ // QUAND ON QUITTE OU RECHARGE LA PAGE, ÇA SAVE 
+function saveGame(){ // when we leve the page it saves
 
   const prepSave = items.listItems.map(row => ({
     name : row.name,
@@ -436,7 +426,7 @@ function saveGame(){ // QUAND ON QUITTE OU RECHARGE LA PAGE, ÇA SAVE
     level : row.level
   }));
 
-  // on sauvegarde la liste des instances
+  // saves instance list  
   localStorage.setItem("itemsList", JSON.stringify(prepSave));
 
   localStorage.setItem("flowerCount", spendableFlowers);
@@ -447,8 +437,8 @@ function saveGame(){ // QUAND ON QUITTE OU RECHARGE LA PAGE, ÇA SAVE
 
 loadGame()
 
-// ==================================
-// SetInterval 
+
+// === GAME LOOP ===
 setInterval(() => {
   spendableFlowers += totalAutoEffect;
   intFlowerCountCumul += totalAutoEffect;
