@@ -18,6 +18,7 @@ body {
   display: flex;
   justify-content: space-between;
   background: url(./img/bg.png) center/cover no-repeat;
+  user-select: none;
 }
 .name {
   font-family: "Aladin", system-ui;

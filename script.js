@@ -19,7 +19,7 @@ const btnClose = document.querySelector(".close")
 const btnFlower = document.querySelector(".flower");
 /// ================================== Variable =================================== ///
 // DOM Elements
-let shopItems = document.querySelector(".container-item-shop"); // récupère le conteneur des items de la boutique pour y ajouter les objets dynamiquement
+let shopItems = document.querySelector(".container-item-shop"); // get shop container to add dynamically JS
 let currentItems = document.querySelector(".container-current-attributs");
 let collectItems = document.querySelector(".ul-collection")
 
@@ -28,7 +28,7 @@ let flowerCountCumul = document.querySelector(".flower-count p > span");
 console.log(flowerCountCumul);
 
 
-let spendableFlowers = parseFloat(flowerCount.textContent) || 0; // Récupère le nombre de fleurs disponibles pour l'achat
+let spendableFlowers = parseFloat(flowerCount.textContent) || 0; 
 let intFlowerCountCumul = parseFloat(flowerCountCumul.textContent) || 0;
 
 // Variables
@@ -36,6 +36,32 @@ let flowerPerClick = 1; // nombre de fleurs par clic de base
 let totalAutoEffect = 0; // effet total des items automatiques
 flowerCount.textContent = Math.round(spendableFlowers.toFixed(0));
 flowerCountCumul.textContent = Math.round(intFlowerCountCumul.toFixed(0));
+
+let displayFrog = false;
+let frogListenerAdded = false;
+
+//localStorage.clear(); // for the debug
+
+/// ==== GAME DATA
+const itemsData = [
+  ["Basket", true,15, 1.3, 0.2, "auto", 0, "./img/basket.png", 0],
+  ["Sickle", true,50, 1.5, 0.4, "auto", 0, "./img/sickle.png", 0],
+  ["Broom",true, 200, 1.7, 0.6, "auto", 0, "./img/broom.png", 0],
+  ["Boots",true, 800, 2, 0.8, "auto", 0, "./img/boots.png", 0],
+  ["Hat",false, 5000, 1.2, 1, "auto", 3000, "./img/hat.png", 0],
+  ["Coat",false, 30000, 2, 6, "click", 15000, "./img/coat.png", 0],
+  ["Bag",false, 40000, 2, 8, "click", 35000, "./img/bag.png", 0],
+  ["Wand",false, 110000, 3, 40, "click", 80000, "./img/wand.png", 0],
+  ["Bell",false, 45000, 2.4, 10, "click", 43000, "./img/bell.png", 0],
+  ["Brush",false, 47000, 2.6, 12, "click", 45000, "./img/brush.png", 0],
+  ["Cushion",false, 50000, 2.8, 15, "click", 47000, "./img/cushion.png", 0],
+  ["Ball of yarn",false, 55000, 3, 20, "click", 18000, "./img/ball_of_yarn.png", 0],
+  ["Necklace", false,85000, 2.2, 50, "click", 18000, "./img/necklace.png", 0],
+  ["Claw", false,65000, 4.2, 30, "click", 100000, "./img/claw.png", 0],
+  ["Scale",false, 85000, 4.4, 65, "click", 100000, "./img/scale.png", 0],
+  ["Red Flame",false, 90000, 4.6, 80, "click", 100000, "./img/fire.png", 0],
+  ["Medicine",false, 95000, 4.8, 100, "click", 100000, "./img/medicine.png", 0],
+  ["Golden Egg",false, 95000, 5, 150, "click", 100000, "./img/egg.png", 0]];
 
 // ==================================
 // Event on click collection
@@ -64,16 +90,7 @@ btnFlower.addEventListener("mouseup", () => {
 /// ================================== CLASS ITEM SHOP =================================== ///
 class items {
   static listItems = []
-  constructor(
-    name,
-    current,
-    price,
-    increasePrice,
-    effect,
-    type,
-    threshold,
-    img,
-    level = 0
+  constructor(name,current,price,increasePrice,effect,type,threshold,img,level = 0
   ) {
     this.name = name;
     this.current = current;
@@ -176,7 +193,7 @@ class items {
       // const ownedSpan = this.li.querySelector(".item-owned");
       // ownedSpan.innerHTML = this.level; // Met à jour la quantité possédée
       const effectSpan = this.li.querySelector(".item-effect");
-      effectSpan.innerHTML = (this.effect * this.level).toFixed(2); // Met à jour l'effet affiché
+      effectSpan.innerHTML = (this.effect).toFixed(2); 
 
       console.log(
         `Achat effectué : ${this.name}, nouvelle quantité possédée : ${this.level}`
@@ -197,81 +214,17 @@ class items {
     // ==================================
   }
 }
-/// ================================== CREATING ITEMS =================================== ///
-
-const basket = new items("Basket", true, 15, 1.5, 0.2, "auto", 0, "./img/basket.png", 0);
-basket.createItem();
-
-const sickle = new items("Sickle", true, 50, 1.7, 0.4, "auto", 0, "./img/sickle.png", 0);
-sickle.createItem();
-
-const broom = new items("Broom", true, 200, 2, 0.6, "auto", 0, "./img/broom.png", 0);
-broom.createItem();
-
-const boots = new items("Boots", true, 800, 2.5, 0.8, "auto", 0, "./img/boots.png", 0);
-boots.createItem();
-
-
-const hat = new items("Hat", false, 5000, 1.2, 1, "click", 3000, "./img/hat.png", 0);
-hat.createItem();
-
-const coat = new items("Coat", false, 30000, 2, 6, "click", 15000, "./img/coat.png", 0);
-coat.createItem();
-
-const bag = new items("Bag", false, 40000, 2, 8, "click", 35000, "./img/bag.png", 0);
-bag.createItem();
-
-const wand = new items("Wand", false, 110000, 3, 40, "click", 80000, "./img/wand.png", 0);
-wand.createItem();
-
-
-
-const cat = new items("Cat", true, 18000, 2, 0.5, "auto", 17000, "./img/cat.png", 0);
-cat.createItem();
-
-const dragon = new items("Dragon", true, 100000, 4, 3, "auto", 80000, "./img/dragon.png", 0);
-dragon.createItem();
-
-
-const bell = new items("Bell", false, 45000, 2.4, 10, "click", 43000, "./img/bell.png", 0);
-bell.createItem();
-
-const brush = new items("Brush", false, 47000, 2.6, 12, "click", 45000, "./img/brush.png", 0);
-brush.createItem();
-
-const cushion = new items("Cushion", false, 50000, 2.8, 15, "click", 47000, "./img/cushion.png", 0);
-cushion.createItem();
-
-const ballOfYarn = new items("Ball of yarn", false, 55000, 3, 20, "click", 18000, "./img/ball_of_yarn.png", 0);
-ballOfYarn.createItem();
-
-const necklace = new items("Necklace", false, 85000, 2.2, 50, "click", 18000, "./img/necklace.png", 0);
-necklace.createItem();
-
-
-
-const claw = new items("Claw", false, 65000, 4.2, 30, "click", 100000, "./img/claw.png", 0);
-claw.createItem();
-const scale = new items("Scale", false, 85000, 4.4, 65, "click", 100000, "./img/scale.png", 0);
-scale.createItem();
-
-const redFlame = new items("Red Flame", false, 90000, 4.6, 80, "click", 100000, "./img/fire.png", 0);
-redFlame.createItem();
-
-const medicine = new items("medicine", false, 95000, 4.8, 100, "click", 100000, "./img/medicine.png", 0);
-medicine.createItem();
-const goldenEgg = new items("Golden Egg", false, 95000, 5, 150, "click", 100000, "./img/egg.png", 0);
-goldenEgg.createItem();
 
 // ==================================
 // Function for display element in the shop
 function displayshop() {
   // It checks the threshold and displays the result based on the available funds or the number of flowers collected.
   items.listItems.forEach((item) => {
-    // if (item.current === false && item.level >= 1) {
-    //   item.li.style.display = "none";
-    //   return; // Ne pas afficher l'item s'il est déjà acheté
-    // }
+    // normal item disapear 
+    if (item.current === false && item.level >= 1) {
+      item.li.style.display = "none";
+      return;
+    } // Don't display if its in collection   
     // If cumul and threshold
     if (intFlowerCountCumul < item.threshold) {
       item.li.style.display = "none"
@@ -291,6 +244,72 @@ function displayshop() {
 
   });
 }
+
+/// ===== load game function
+function loadGame() {
+
+  items.listItems = [] 
+  
+  shopItems.innerHTML = "" // évite les doublons
+
+  const saved = JSON.parse(localStorage.getItem("itemsList")||"[]");
+
+    if (saved.length === 0) { // tu commences un nouveau jeu
+        console.log("Aucune sauvegarde trouvée — création des items par défaut.");
+
+        itemsData.forEach(stat => {
+          new items(...stat).createItem();}); // charge les stats 
+
+        // conditions de base
+
+        flowerCount.textContent = 0;
+        flowerCountCumul.textContent = 0;
+        spendableFlowers = parseFloat(localStorage.getItem("flowerCount"))||spendableFlowers;
+        intFlowerCountCumul = parseFloat(localStorage.getItem("flowerCountCumul"))||intFlowerCountCumul;
+        flowerPerClick = parseFloat(localStorage.getItem("clickerValue"))||1;
+        totalAutoEffect = parseFloat(localStorage.getItem("effect"))||0;
+        
+        console.log("Sauvegarde trouvée — chargement...");
+
+    } else { 
+
+      // Sinon, si le localStorage contient des data, on les charge
+
+    // Recrée les instances
+
+    saved.forEach(obj => {
+      
+      const createClass = new items(
+            obj.name,
+            obj.current,
+            parseFloat(obj.price),
+            parseFloat(obj.increasePrice),
+            parseFloat(obj.effect),
+            obj.type,
+            parseFloat(obj.threshold),
+            obj.img,
+            parseInt(obj.level));
+
+            createClass.createItem()
+        });
+
+      
+    // affiche le HTML 
+
+
+
+    // Charge les autres valeurs A DEBUG
+    spendableFlowers = parseFloat(localStorage.getItem("flowerCount")) || 0;
+    intFlowerCountCumul = parseFloat(localStorage.getItem("flowerCountCumul")) || 0;
+    totalAutoEffect = parseFloat(localStorage.getItem("effects")) || 0;
+    flowerPerClick = parseFloat(localStorage.getItem("clickerValue")) || 1;
+
+    //console.log("Items chargés :", items.listItems); 
+
+    flowerCount.textContent = parseFloat(spendableFlowers.toFixed(2));
+    flowerCountCumul.textContent = parseFloat(intFlowerCountCumul.toFixed(2));
+    console.log("jeu chargé")
+}}
 
 // ==================================
 //  Area for improvement: aiming to give a boost
@@ -374,8 +393,6 @@ function displayshop() {
 // }
 // ==================================
 // ==================================
-let frogListenerAdded = false;
-let displayFrog = false;
 // Allows you to check if the frog display is active
 function popFrog() {
   // Seulement si le seuil est atteint et que le display n'est pas déjà actif
@@ -402,14 +419,51 @@ function popFrog() {
     }
   }
 }
+
+/// ================================== SAVE GAME =================================== ///
+
+function saveGame(){ // QUAND ON QUITTE OU RECHARGE LA PAGE, ÇA SAVE 
+
+  const prepSave = items.listItems.map(row => ({
+    name : row.name,
+    current : row.current,
+    price : row.price,
+    increasePrice : row.increasePrice,
+    effect : row.effect,
+    type : row.type,
+    threshold : row.threshold,
+    img : row.img,
+    level : row.level
+  }));
+
+  // on sauvegarde la liste des instances
+  localStorage.setItem("itemsList", JSON.stringify(prepSave));
+
+  localStorage.setItem("flowerCount", spendableFlowers);
+  localStorage.setItem("flowerCountCumul",intFlowerCountCumul)
+  localStorage.setItem("clickerValue", flowerPerClick);
+  localStorage.setItem("effects", totalAutoEffect);
+}
+
+loadGame()
+
 // ==================================
 // SetInterval 
 setInterval(() => {
   spendableFlowers += totalAutoEffect;
   intFlowerCountCumul += totalAutoEffect;
-  flowerCount.textContent = spendableFlowers.toFixed(2);
-  flowerCountCumul.textContent = intFlowerCountCumul.toFixed(2);
+  flowerCount.textContent = Math.round(spendableFlowers.toFixed(2));
+  flowerCountCumul.textContent = Math.round(intFlowerCountCumul.toFixed(2));
   // updateLiquidAnimation();
   displayshop();
   popFrog()
 }, 1000);
+
+setInterval(() => {
+  saveGame(); // save game every 10 s
+  console.log("localStorage updated");
+  console.log(localStorage.getItem("itemsList"));
+},10000);
+
+// Save on page unload
+window.addEventListener("beforeunload", saveGame);
